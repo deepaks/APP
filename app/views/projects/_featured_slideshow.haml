@@ -1,0 +1,15 @@
+/ = link_to "previous", "#", :class => "featured_slideshow_action_previous"
+/ = link_to "next", "#", :class => "featured_slideshow_action_next"
+
+#featured_slideshow
+  -# = image_tag @project.thumbnail.image.url(:large)
+
+
+
+-#- @project.pictures.each do |picture|
+  -#%div{:style => "display:inline-block"}
+    -#= image_tag picture.image.url(:thumb)
+  
+%script
+  = "images = [#{@pictures.collect{|p| '{id: ' + p.id.to_s + ', src:' + '\'' + p.image.url(:large) + '\'' + ', caption: ' + '\'' + p.caption + '\'' + '}'}.join(',')}];"
+  new SlideShow('featured_slideshow',images);

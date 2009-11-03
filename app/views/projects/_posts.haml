@@ -1,0 +1,5 @@
+#viewport.makeScroll
+  %h2
+    =h @project.name
+  - @project.posts.each do |post|
+    = render :partial => "/posts/full", :locals => {:post => post}

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Paperclip::Shoulda::Matchers::HaveAttachedFileMatcher</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Paperclip::Shoulda::Matchers::HaveAttachedFileMatcher</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher_rb.html">
+                vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../../../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002603">description</a>&nbsp;&nbsp;
+      <a href="#M002601">failure_message</a>&nbsp;&nbsp;
+      <a href="#M002605">has_column?</a>&nbsp;&nbsp;
+      <a href="#M002606">included?</a>&nbsp;&nbsp;
+      <a href="#M002600">matches?</a>&nbsp;&nbsp;
+      <a href="#M002602">negative_failure_message</a>&nbsp;&nbsp;
+      <a href="#M002599">new</a>&nbsp;&nbsp;
+      <a href="#M002604">responds?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002599" class="method-detail">
+        <a name="M002599"></a>
+
+        <div class="method-heading">
+          <a href="#M002599" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(attachment_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002599-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002599-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 9</span>
+ 9:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">attachment_name</span>
+10:           <span class="ruby-ivar">@attachment_name</span> = <span class="ruby-identifier">attachment_name</span>
+11:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002603" class="method-detail">
+        <a name="M002603"></a>
+
+        <div class="method-heading">
+          <a href="#M002603" class="method-signature">
+          <span class="method-name">description</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002603-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002603-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 26</span>
+26:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">description</span>
+27:           <span class="ruby-node">&quot;have an attachment named #{@attachment_name}&quot;</span>
+28:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002601" class="method-detail">
+        <a name="M002601"></a>
+
+        <div class="method-heading">
+          <a href="#M002601" class="method-signature">
+          <span class="method-name">failure_message</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002601-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002601-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 18</span>
+18:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">failure_message</span>
+19:           <span class="ruby-node">&quot;Should have an attachment named #{@attachment_name}&quot;</span>
+20:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002600" class="method-detail">
+        <a name="M002600"></a>
+
+        <div class="method-heading">
+          <a href="#M002600" class="method-signature">
+          <span class="method-name">matches?</span><span class="method-args">(subject)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002600-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002600-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 13</span>
+13:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matches?</span> <span class="ruby-identifier">subject</span>
+14:           <span class="ruby-ivar">@subject</span> = <span class="ruby-identifier">subject</span>
+15:           <span class="ruby-identifier">responds?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">has_column?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">included?</span>
+16:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002602" class="method-detail">
+        <a name="M002602"></a>
+
+        <div class="method-heading">
+          <a href="#M002602" class="method-signature">
+          <span class="method-name">negative_failure_message</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002602-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002602-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 22</span>
+22:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">negative_failure_message</span>
+23:           <span class="ruby-node">&quot;Should not have an attachment named #{@attachment_name}&quot;</span>
+24:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M002605" class="method-detail">
+        <a name="M002605"></a>
+
+        <div class="method-heading">
+          <a href="#M002605" class="method-signature">
+          <span class="method-name">has_column?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002605-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002605-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 39</span>
+39:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_column?</span>
+40:           <span class="ruby-ivar">@subject</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;#{@attachment_name}_file_name&quot;</span>)
+41:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002606" class="method-detail">
+        <a name="M002606"></a>
+
+        <div class="method-heading">
+          <a href="#M002606" class="method-signature">
+          <span class="method-name">included?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002606-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002606-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 43</span>
+43:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">included?</span>
+44:           <span class="ruby-ivar">@subject</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-constant">Paperclip</span><span class="ruby-operator">::</span><span class="ruby-constant">InstanceMethods</span>)
+45:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002604" class="method-detail">
+        <a name="M002604"></a>
+
+        <div class="method-heading">
+          <a href="#M002604" class="method-signature">
+          <span class="method-name">responds?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002604-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002604-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/matchers/have_attached_file_matcher.rb, line 32</span>
+32:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">responds?</span>
+33:           <span class="ruby-identifier">methods</span> = <span class="ruby-ivar">@subject</span>.<span class="ruby-identifier">instance_methods</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_s</span>)
+34:           <span class="ruby-identifier">methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;#{@attachment_name}&quot;</span>) <span class="ruby-operator">&amp;&amp;</span>
+35:             <span class="ruby-identifier">methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;#{@attachment_name}=&quot;</span>) <span class="ruby-operator">&amp;&amp;</span>
+36:             <span class="ruby-identifier">methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;#{@attachment_name}?&quot;</span>)
+37:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

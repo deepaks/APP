@@ -1,0 +1,10 @@
+- if is_main_layout?
+  = auto_page_parts
+
+- title("Sign Up")
+
+= render :partial => 'form'
+
+- unless @service_plan.nil?
+  =@service_plan.plan_type
+  =@service_plan.feature_description

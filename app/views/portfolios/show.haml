@@ -1,0 +1,15 @@
+- title "Portfolio: " + h(@portfolio.name)
+
+- if @portfolio.projects.size > 0
+  This portfolio contains following projects:
+  %ul
+    - @portfolio.projects.each do |proj|
+      %li
+        = link_to proj.name, project_path(proj)
+
+%p
+  = link_to "Edit", edit_portfolio_path(@portfolio)
+  |
+  = link_to "Destroy", @portfolio, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", portfolios_path

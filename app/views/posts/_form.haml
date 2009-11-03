@@ -1,0 +1,20 @@
+%p
+  = form.label :title
+  %br
+  = form.text_field :title
+  
+- fields_for @plaintext do |t|
+  %p
+    = t.label :body
+    %br
+    -#= t.text_area :body
+    = textile_editor :plaintext, :body, :wrapper => "new_post", :style => "width:100%; height: 300px"
+    
+    
+%p
+  = form.label :tag_list
+  %br
+  = form.text_field :tag_list
+  
+  
+= textile_editor_initialize

@@ -1,0 +1,22 @@
+# slideshow
+
+page.replace_html 'sidebar',:partial => "/projects/featured_slideshow"
+
+caption = "Project: #{@project.name} - #{@pictures.size} Pictures "
+
+if !current_user.nil? and current_user.belongs_to_account?(current_account.id)
+  #caption << " - Click on the image to flip through"
+  caption << " | #{link_to('Edit', edit_project_path(@project))}"
+end
+
+page.insert_html :top, 'sidebar', "<h2>#{caption}</h2>"
+
+# post list
+page.replace_html 'content',:partial => "/projects/posts"
+
+# reset scroll bar
+page << "Scroller.setAll()"
+
+# highlight sub header
+page.select(".project_swatch a").each {|link| link.removeClassName("active")}
+page.select("#project_swatch_#{@project.id} a").each {|link| link.addClassName("active")} 

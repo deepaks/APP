@@ -1,0 +1,30 @@
+<h1>Listing order_transactions</h1>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Action</th>
+    <th>Amount</th>
+    <th>Success</th>
+    <th>Authorization</th>
+    <th>Params</th>
+  </tr>
+
+<% @order_transactions.each do |order_transaction| %>
+  <tr>
+    <td><%=h order_transaction.order_id %></td>
+    <td><%=h order_transaction.action %></td>
+    <td><%=h order_transaction.amount %></td>
+    <td><%=h order_transaction.success %></td>
+    <td><%=h order_transaction.authorization %></td>
+    <td><%=h order_transaction.params %></td>
+    <td><%= link_to 'Show', order_transaction %></td>
+    <td><%= link_to 'Edit', edit_order_transaction_path(order_transaction) %></td>
+    <td><%= link_to 'Destroy', order_transaction, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New order_transaction', new_order_transaction_path %>

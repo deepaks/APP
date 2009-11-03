@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Authlogic::Session::MagicColumns::InstanceMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Authlogic::Session::MagicColumns::InstanceMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/vendor/gems/authlogic-2_1_1/lib/authlogic/session/magic_columns_rb.html">
+                vendor/gems/authlogic-2.1.1/lib/authlogic/session/magic_columns.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The methods available for an <a
+href="../Base.html">Authlogic::Session::Base</a> object that make up the
+magic columns feature.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000904">set_last_request_at?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Private Instance methods</h3>
+
+      <div id="method-M000904" class="method-detail">
+        <a name="M000904"></a>
+
+        <div class="method-heading">
+          <a href="#M000904" class="method-signature">
+          <span class="method-name">set_last_request_at?</span><span class="method-args">(</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method lets authlogic know whether it should allow the last_request_at
+field to be updated with the current time (Time.now). One thing to note
+here is that it also checks for the existence of a
+last_request_update_allowed? method in your controller. This allows you to
+control this method pragmatically in your controller.
+</p>
+<p>
+For example, what if you had a javascript function that polled the server
+updating how much time is left in their session before it times out.
+Obviously you would want to ignore this request, because then the user
+would never time out. So you can do something like this in your controller:
+</p>
+<pre>
+  def last_request_update_allowed?
+    action_name =! &quot;update_session_time_left&quot;
+  end
+</pre>
+<p>
+You can do whatever you want with that method.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000904-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000904-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/authlogic-2.1.1/lib/authlogic/session/magic_columns.rb, line 78</span>
+78:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_last_request_at?</span> <span class="ruby-comment cmt"># :doc:</span>
+79:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">klass</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">&quot;last_request_at&quot;</span>)
+80:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">last_request_update_allowed?</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">responds_to_last_request_update_allowed?</span>
+81:             <span class="ruby-identifier">record</span>.<span class="ruby-identifier">last_request_at</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">last_request_at_threshold</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">seconds</span>.<span class="ruby-identifier">ago</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">last_request_at</span>
+82:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

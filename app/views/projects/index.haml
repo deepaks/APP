@@ -1,0 +1,16 @@
+- title("Projects")
+
+%ul
+  - @projects.each do |project|
+    %li
+      %strong
+        = h project.name
+      |
+      = link_to "Show", project
+      |
+      = link_to "Edit", edit_project_path(project)
+      |
+      = link_to "Destroy", project, :confirm => 'Are you sure?', :method => :delete
+
+%p
+  = link_to "New Project", new_project_path

@@ -1,0 +1,18 @@
+<p>
+  <b>Plan type:</b>
+  <%=h @service_plan.plan_type %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @service_plan.price %>
+</p>
+
+<p>
+  <b>Feature description:</b>
+  <%=h @service_plan.feature_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_service_plan_path(@service_plan) %> |
+<%= link_to 'Back', service_plans_path %>

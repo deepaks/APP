@@ -1,0 +1,15 @@
+- form_for @plaintext do |f| 
+  = f.error_messages 
+  %p
+    = f.label :body 
+    %br
+    = f.text_area :body 
+  
+  - fields_for "post" do |p|
+    %p
+    = p.label :project
+    %br
+    = p.select "project", @projects.map {|proj| [proj.name, proj.id]}, {:selected => ((@plaintext.post.nil? || @plaintext.post.project.nil?) ? "" : @plaintext.post.project.id.to_i), :include_blank => '-- select project --'}
+  
+  
+  %p= f.submit "Submit" 

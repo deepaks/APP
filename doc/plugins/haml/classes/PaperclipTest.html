@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: PaperclipTest</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">PaperclipTest</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/vendor/plugins/paperclip/test/paperclip_test_rb.html">
+                vendor/plugins/paperclip/test/paperclip_test.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Test::Unit::TestCase
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000646">should_validate</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000646" class="method-detail">
+        <a name="M000646"></a>
+
+        <div class="method-heading">
+          <a href="#M000646" class="method-signature">
+          <span class="method-name">should_validate</span><span class="method-args">(validation, options, valid_file, invalid_file)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000646-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000646-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/paperclip/test/paperclip_test.rb, line 228</span>
+228:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">should_validate</span> <span class="ruby-identifier">validation</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">valid_file</span>, <span class="ruby-identifier">invalid_file</span>
+229:       <span class="ruby-identifier">context</span> <span class="ruby-node">&quot;with #{validation} validation and #{options.inspect} options&quot;</span> <span class="ruby-keyword kw">do</span>
+230:         <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+231:           <span class="ruby-constant">Dummy</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;validates_attachment_#{validation}&quot;</span><span class="ruby-node">&quot;validates_attachment_#{validation}&quot;</span>, <span class="ruby-identifier">:avatar</span>, <span class="ruby-identifier">options</span>)
+232:           <span class="ruby-ivar">@dummy</span> = <span class="ruby-constant">Dummy</span>.<span class="ruby-identifier">new</span>
+233:         <span class="ruby-keyword kw">end</span>
+234:         <span class="ruby-identifier">context</span> <span class="ruby-value str">&quot;and assigning nil&quot;</span> <span class="ruby-keyword kw">do</span>
+235:           <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+236:             <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span> = <span class="ruby-keyword kw">nil</span>
+237:             <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">valid?</span>
+238:           <span class="ruby-keyword kw">end</span>
+239:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">validation</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:presence</span>
+240:             <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;have an error on the attachment&quot;</span> <span class="ruby-keyword kw">do</span>
+241:               <span class="ruby-identifier">assert</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:avatar</span>)
+242:             <span class="ruby-keyword kw">end</span>
+243:           <span class="ruby-keyword kw">else</span>
+244:             <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;not have an error on the attachment&quot;</span> <span class="ruby-keyword kw">do</span>
+245:               <span class="ruby-identifier">assert_nil</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:avatar</span>)
+246:             <span class="ruby-keyword kw">end</span>
+247:           <span class="ruby-keyword kw">end</span>
+248:         <span class="ruby-keyword kw">end</span>
+249:         <span class="ruby-identifier">context</span> <span class="ruby-value str">&quot;and assigned a valid file&quot;</span> <span class="ruby-keyword kw">do</span>
+250:           <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+251:             <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span> = <span class="ruby-identifier">valid_file</span>
+252:             <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">valid?</span>
+253:           <span class="ruby-keyword kw">end</span>
+254:           <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;not have an error when assigned a valid file&quot;</span> <span class="ruby-keyword kw">do</span>
+255:             <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">validation</span>)
+256:           <span class="ruby-keyword kw">end</span>
+257:           <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;not have an error on the attachment&quot;</span> <span class="ruby-keyword kw">do</span>
+258:             <span class="ruby-identifier">assert_nil</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:avatar</span>)
+259:           <span class="ruby-keyword kw">end</span>
+260:         <span class="ruby-keyword kw">end</span>
+261:         <span class="ruby-identifier">context</span> <span class="ruby-value str">&quot;and assigned an invalid file&quot;</span> <span class="ruby-keyword kw">do</span>
+262:           <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+263:             <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span> = <span class="ruby-identifier">invalid_file</span>
+264:             <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">valid?</span>
+265:           <span class="ruby-keyword kw">end</span>
+266:           <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;have an error when assigned a valid file&quot;</span> <span class="ruby-keyword kw">do</span>
+267:             <span class="ruby-identifier">assert_not_nil</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span>.<span class="ruby-identifier">errors</span>[<span class="ruby-identifier">validation</span>]
+268:           <span class="ruby-keyword kw">end</span>
+269:           <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;have an error on the attachment&quot;</span> <span class="ruby-keyword kw">do</span>
+270:             <span class="ruby-identifier">assert</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:avatar</span>)
+271:           <span class="ruby-keyword kw">end</span>
+272:         <span class="ruby-keyword kw">end</span>
+273:       <span class="ruby-keyword kw">end</span>
+274:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

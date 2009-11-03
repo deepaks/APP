@@ -1,0 +1,4 @@
+%li{:id => "#{one.class.name}_#{one.id}", :class => "picture picture_#{one.id}", :style => "display:inline-block"}
+  = image_tag one.image.url(:thumb)
+  .image_caption
+    = one.name

@@ -1,0 +1,28 @@
+- time = Time.now.to_i
+%li{:id => "post_part_#{time}"}
+
+  = image_tag @one.image.url(:small)
+  - form_for @one, :url => picture_upload_path_with_session_information(form_action, @one.id), :html => {:multipart => true, :target => "upload_frame_#{@one.id}"} do |f| 
+    = f.error_messages 
+    %p
+      = f.label "Caption"
+      %br
+      = f.text_field :name, :value => (defined?(one) ? one.name : '')
+    
+    %p
+      = f.label :image
+      %br
+      = f.file_field :image
+      
+    %p
+      - fields_for @post do |p|
+        = p.hidden_field :id, :value => @post.id
+      - fields_for "item" do |i|
+        = i.hidden_field :id, :value => "post_part_#{time}"
+        = i.hidden_field :post_part_id, :value => @post_part.id
+      = f.submit "Save"
+      - if defined?(one)
+        = link_to_remote "Cancel",:url => {:controller => "posts", :action => "show_part", :part => @post_part, :container => "post_part_#{time}"} 
+      - else
+        = link_to_function "Cancel","cancel_current_part('post_part_#{time}')"
+  %iframe{:id => "upload_frame_#{@one.id}",:name => "upload_frame_#{@one.id}", :style=> "width:0;height:0;border:none", :src=> "about:blank"}

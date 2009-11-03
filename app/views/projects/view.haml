@@ -1,0 +1,20 @@
+= auto_page_parts
+
+= render :partial => "/projects/posts"
+
+- content_for :head do
+  = javascript_include_tag "slideshow","slider","scroller"
+
+- content_for :sidebar do
+  %h2
+    = "Project: " + @project.name + " - #{@pictures.size} Pictures"
+    -#= " - Click on the image to flip through"
+    
+    - if !current_user.nil? and current_user.belongs_to_account?(current_account.id)
+      |
+      = link_to "Edit", edit_project_path(@project)
+      
+    
+    
+  = render :partial => "/projects/featured_slideshow"
+

@@ -1,0 +1,13 @@
+%div{:style=>"padding:10px;border:1px solid #DDD;margin-top:10px"}
+  %h4{:style=>"margin:0"}
+    Choose Pictures from Gallery
+  
+  - remote_form_for @post, :url => @gallery_picker_form_url do |f|
+    - f.fields_for "content_ids" do |ff|
+      %ul#media_gallery
+        - @media.each do |m|
+          %li.media_item{:id => "media_item_#{m.class.name.downcase}_#{m.id}"}
+            = render :partial => "/#{m.class.name.downcase.pluralize}/gallery_pick", :locals => {:one => m}
+      .clear
+  
+    = f.submit "Insert into post"

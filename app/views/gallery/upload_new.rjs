@@ -1,0 +1,6 @@
+if @picture.id.nil?
+  page << "alert('Picture not saved')"
+else
+  item = render :partial => "/pictures/gallery_view", :locals => {:one => @picture}
+  page.insert_html :bottom, "media_gallery", '<li class="media_item">' + item + "</li>"
+end

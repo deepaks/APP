@@ -1,0 +1,42 @@
+- content_for :head do
+  = javascript_include_tag 'swfupload/swfupload','swfupload/fileprogress','swfupload/handlers','swfupload/swfupload.queue'#,'uploader'
+
+= render :partial => 'shared/swfupload_init'  
+
+- title h(@post.title)
+
+- unless @post.project.nil?
+  #project
+  This post is filed in project:
+  = link_to @post.project.name, project_path(@post.project)
+
+%ul#post_parts
+  - if @post.post_parts.size > 0
+    - @post.post_parts.each do |post_part|
+      - unless post_part.content.nil?
+        = render :partial => "/#{post_part.content.class.name.downcase.pluralize}/one", :locals => {:one => post_part.content, :post_part => post_part}
+
+= sortable_element( "post_parts", :url => {:controller => :posts, :action => :sort, :id => @post.id}, :handle => ".drag_handle", :complete => visual_effect(:highlight, "post_parts"))
+
+%p
+  Add 
+  = link_to_remote "Text", :url => {:controller => "posts", :action => "add_part", :id => @post, :type => "plaintext"}
+  |
+  = link_to_remote "Picture", :url => {:controller => "posts", :action => "add_part", :id => @post, :type => "picture"}
+  |
+  = link_to_remote "Video", :url => {:controller => "posts", :action => "add_part", :id => @post, :type => "video"}
+
+%p
+  = link_to "Destroy", @post, :confirm => 'Are you sure?', :method => :delete 
+
+  |
+  = link_to "View All", posts_path
+
+
+= textile_editor_support
+
+
+%script{:type => "text/javascript", :charset => "utf-8"}
+  function cancel_current_part(id){$(id).remove();}
+  function select_from_gallery(id){$(id).toggleClassName('selected');$$("#" + id + " input").each(function(e){e.checked = e.checked ? "" : "checked"});}
+  -#= "Sortable.create('post_parts', {handles:$$('#post_parts li span.drag_handle'),  onEnd:function(){console.info('track me')}} );"

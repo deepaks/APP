@@ -1,0 +1,4 @@
+.media_thumb
+  = link_to image_tag(one.image.url(:thumb)),one.image.url(:large), :rel=>"lightbox[Gallery]",:title => one.name
+  = link_to_remote "featured", :url => toggle_feature_picture_path(one), :html => {:id => "feature_picture_#{one.id}", :class => "toggle_feature_picture #{one.featured ? "feature_picture_featured" : "feature_picture_normal"}"}
+  

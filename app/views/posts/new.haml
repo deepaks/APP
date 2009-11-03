@@ -1,0 +1,14 @@
+- title h("New Post")
+
+- form_for @post, :url => {:controller => :posts, :action => :create} do |f|
+  
+  = render :partial => "/posts/form",:locals => {:form => f}
+    
+  %p
+    = f.label :project_id
+    %br
+    = f.select :project_id, @projects.map {|proj| [proj.name, proj.id]}, {:include_blank => '-- select project --'}
+
+  %p
+    = f.hidden_field :account_id, :value => current_account.id
+    = f.submit "Create"

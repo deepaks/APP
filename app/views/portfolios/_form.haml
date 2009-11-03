@@ -1,0 +1,15 @@
+-form_for @portfolio do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+    
+    
+  %p
+    = f.label :projects 
+    %br
+    = collection_multiple_select 'portfolio', 'project_ids',@projects,"id","name"
+  
+  %p
+    = f.submit "Submit"

@@ -1,0 +1,17 @@
+%div{:style=>"padding:10px;border:1px solid #DDD;margin-top:10px"}
+  %h4{:style=>"margin:0"}
+    Upload New Pictures
+  - form_for "upload", :url=>{:controller => "gallery", :action => "upload_new"}, :method =>"post", :html => {:multipart => :true} do |f|
+    
+    #fsUploadProgress.fieldset.flash
+      / %span.legend
+      /   Upload Queue
+    .clear
+    #divStatus{:style=>"display:none"}
+      0 Files Uploaded
+    %div#upload-tools
+      %span#spanButtonPlaceHolder
+      -#= link_to_function "Browse","swfu.selectFiles();"
+      -#= link_to_function "Upload","swfu.startUpload();"
+      = link_to_function "Cancel", "swfu.cancelQueue()", :id => "btnCancel", :disabled=>"disabled", :style=>"margin-left: 2px; font-size: 8pt; height: 29px;"
+    

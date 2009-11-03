@@ -1,0 +1,17 @@
+<% title "Plaintexts" %>
+
+<table>
+  <tr>
+    <th>Body</th>
+  </tr>
+  <% for plaintext in @plaintexts %>
+    <tr>
+      <td><%=h plaintext.body %></td>
+      <td><%= link_to "Show", plaintext %></td>
+      <td><%= link_to "Edit", edit_plaintext_path(plaintext) %></td>
+      <td><%= link_to "Destroy", plaintext, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Plaintext", new_plaintext_path %></p>

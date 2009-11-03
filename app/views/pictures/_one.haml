@@ -1,0 +1,14 @@
+%li{:id => "item_#{post_part.id}", :class => "post_part post_part_#{post_part.position} picture_#{one.id}"}
+  %div.tools
+    = link_to_remote "Change", :url => {:controller => "posts", :action => "edit_part",:id => post_part.post.id, :part => post_part.id}
+    = link_to_remote "Remove", :url => {:controller => "posts", :action => "remove_part",:id => post_part.post.id, :part => post_part.id}, :confirm => "Are you sure?"
+    -#= link_to "Edit with Picnik", picnik_edit_url(one.image.url, 'crow', url_for(:only_path => false))
+    %span.drag_handle
+      (pic)
+      
+  = image_tag one.image.url(:small)
+  - unless one.name.nil? or one.name.empty?
+    %br
+    = one.name
+
+  

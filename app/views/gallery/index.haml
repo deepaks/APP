@@ -1,0 +1,22 @@
+- content_for :head do
+  = javascript_include_tag 'lightbox','scriptaculous.js?load=builder,effects'
+  = stylesheet_link_tag 'lightbox'
+  = javascript_include_tag 'swfupload/swfupload','swfupload/fileprogress','swfupload/handlers','swfupload/swfupload.queue','uploader'
+
+  
+-  title "Gallery"
+
+%ul#media_gallery
+  - @media.each do |m|
+    %li#media_item
+      = render :partial => "/#{m.class.name.downcase.pluralize}/gallery_view", :locals => {:one => m}
+        
+.clear
+
+-#= link_to_function("Upload New",:id => "show_upload" ){|page| page['upload_form'].toggle}
+  
+#upload_form{:style => "display:block"}
+  = render :partial => "gallery/upload"
+
+%script
+  = "initUploader('#{decode_entities(upload_to_gallery_path_with_session_information)}');"

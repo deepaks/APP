@@ -1,0 +1,1 @@
+page.replace "item_#{@post_part.id}", :partial => "#{@type.downcase.pluralize}/inplace_form",:locals => {:form_action => "update", :one => @one, :post_part => @post_part}

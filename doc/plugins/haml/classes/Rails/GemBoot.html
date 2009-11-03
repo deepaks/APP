@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Rails::GemBoot</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Rails::GemBoot</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/config/boot_rb.html">
+                config/boot.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Boot.html">
+                Boot
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001326">gem_version</a>&nbsp;&nbsp;
+      <a href="#M001323">load_initializer</a>&nbsp;&nbsp;
+      <a href="#M001324">load_rails_gem</a>&nbsp;&nbsp;
+      <a href="#M001327">load_rubygems</a>&nbsp;&nbsp;
+      <a href="#M001328">parse_gem_version</a>&nbsp;&nbsp;
+      <a href="#M001325">rubygems_version</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M001326" class="method-detail">
+        <a name="M001326"></a>
+
+        <div class="method-heading">
+          <a href="#M001326" class="method-signature">
+          <span class="method-name">gem_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001326-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001326-source">
+<pre>
+    <span class="ruby-comment cmt"># File config/boot.rb, line 74</span>
+74:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gem_version</span>
+75:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span> <span class="ruby-constant">RAILS_GEM_VERSION</span>
+76:           <span class="ruby-constant">RAILS_GEM_VERSION</span>
+77:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">ENV</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'RAILS_GEM_VERSION'</span>)
+78:           <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'RAILS_GEM_VERSION'</span>]
+79:         <span class="ruby-keyword kw">else</span>
+80:           <span class="ruby-identifier">parse_gem_version</span>(<span class="ruby-identifier">read_environment_rb</span>)
+81:         <span class="ruby-keyword kw">end</span>
+82:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001327" class="method-detail">
+        <a name="M001327"></a>
+
+        <div class="method-heading">
+          <a href="#M001327" class="method-signature">
+          <span class="method-name">load_rubygems</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001327-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001327-source">
+<pre>
+    <span class="ruby-comment cmt"># File config/boot.rb, line 84</span>
+84:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_rubygems</span>
+85:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'rubygems'</span>
+86:         <span class="ruby-identifier">min_version</span> = <span class="ruby-value str">'1.3.1'</span>
+87:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">rubygems_version</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">min_version</span>
+88:           <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">%Q(Rails requires RubyGems &gt;= #{min_version} (you have #{rubygems_version}). Please `gem update --system` and try again.)</span>
+89:           <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
+90:         <span class="ruby-keyword kw">end</span>
+91: 
+92:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
+93:         <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">%Q(Rails requires RubyGems &gt;= #{min_version}. Please install RubyGems and try again: http://rubygems.rubyforge.org)</span>
+94:         <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
+95:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001328" class="method-detail">
+        <a name="M001328"></a>
+
+        <div class="method-heading">
+          <a href="#M001328" class="method-signature">
+          <span class="method-name">parse_gem_version</span><span class="method-args">(text)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001328-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001328-source">
+<pre>
+    <span class="ruby-comment cmt"># File config/boot.rb, line 97</span>
+97:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_gem_version</span>(<span class="ruby-identifier">text</span>)
+98:         <span class="ruby-identifier">$1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[^#]*RAILS_GEM_VERSION\s*=\s*[&quot;']([!~&lt;&gt;=]*\s*[\d.]+)[&quot;']/</span>
+99:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001325" class="method-detail">
+        <a name="M001325"></a>
+
+        <div class="method-heading">
+          <a href="#M001325" class="method-signature">
+          <span class="method-name">rubygems_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001325-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001325-source">
+<pre>
+    <span class="ruby-comment cmt"># File config/boot.rb, line 70</span>
+70:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rubygems_version</span>
+71:         <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">RubyGemsVersion</span> <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
+72:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001323" class="method-detail">
+        <a name="M001323"></a>
+
+        <div class="method-heading">
+          <a href="#M001323" class="method-signature">
+          <span class="method-name">load_initializer</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001323-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001323-source">
+<pre>
+    <span class="ruby-comment cmt"># File config/boot.rb, line 52</span>
+52:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_initializer</span>
+53:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">load_rubygems</span>
+54:       <span class="ruby-identifier">load_rails_gem</span>
+55:       <span class="ruby-identifier">require</span> <span class="ruby-value str">'initializer'</span>
+56:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001324" class="method-detail">
+        <a name="M001324"></a>
+
+        <div class="method-heading">
+          <a href="#M001324" class="method-signature">
+          <span class="method-name">load_rails_gem</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001324-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001324-source">
+<pre>
+    <span class="ruby-comment cmt"># File config/boot.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_rails_gem</span>
+59:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">version</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">gem_version</span>
+60:         <span class="ruby-identifier">gem</span> <span class="ruby-value str">'rails'</span>, <span class="ruby-identifier">version</span>
+61:       <span class="ruby-keyword kw">else</span>
+62:         <span class="ruby-identifier">gem</span> <span class="ruby-value str">'rails'</span>
+63:       <span class="ruby-keyword kw">end</span>
+64:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">load_error</span>
+65:       <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">%(Missing the Rails #{version} gem. Please `gem install -v=#{version} rails`, update your RAILS_GEM_VERSION setting in config/environment.rb for the Rails version you do have installed, or comment out RAILS_GEM_VERSION to use the latest version installed.)</span>
+66:       <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
+67:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: paperclip.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>paperclip.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/paperclip/lib/paperclip.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Jul 29 11:51:23 -0400 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="../../../../../classes/Paperclip.html">Paperclip</a> allows file
+attachments that are stored in the filesystem. All graphical
+transformations are done using the Graphics/ImageMagick command line
+utilities and are stored in Tempfiles until the record is saved. <a
+href="../../../../../classes/Paperclip.html">Paperclip</a> does not require
+a separate model for storing the attachment&#8216;s information, instead
+adding a few simple columns to your table.
+</p>
+<table>
+<tr><td valign="top">Author:</td><td>Jon Yurek
+
+</td></tr>
+<tr><td valign="top">Copyright:</td><td>Copyright (c) 2008-2009 thoughtbot, inc.
+
+</td></tr>
+<tr><td valign="top">License:</td><td>MIT License (<a
+href="http://www.opensource.org/licenses/mit-license.php">www.opensource.org/licenses/mit-license.php</a>)
+
+</td></tr>
+</table>
+<p>
+<a href="../../../../../classes/Paperclip.html">Paperclip</a> defines an
+attachment as any file, though it makes special considerations for image
+files. You can declare that a model has an attached file with the
+<tt>has_attached_file</tt> method:
+</p>
+<pre>
+  class User &lt; ActiveRecord::Base
+    has_attached_file :avatar, :styles =&gt; { :thumb =&gt; &quot;100x100&quot; }
+  end
+
+  user = User.new
+  user.avatar = params[:user][:avatar]
+  user.avatar.url
+  # =&gt; &quot;/users/avatars/4/original_me.jpg&quot;
+  user.avatar.url(:thumb)
+  # =&gt; &quot;/users/avatars/4/thumb_me.jpg&quot;
+</pre>
+<p>
+See the <tt>has_attached_file</tt> documentation for more details.
+</p>
+
+    </div>
+
+    <div id="requires-list">
+      <h3 class="section-bar">Required files</h3>
+
+      <div class="name-list">
+      tempfile&nbsp;&nbsp;
+      paperclip/upfile&nbsp;&nbsp;
+      paperclip/iostream&nbsp;&nbsp;
+      paperclip/geometry&nbsp;&nbsp;
+      paperclip/processor&nbsp;&nbsp;
+      paperclip/thumbnail&nbsp;&nbsp;
+      paperclip/storage&nbsp;&nbsp;
+      paperclip/interpolations&nbsp;&nbsp;
+      paperclip/attachment&nbsp;&nbsp;
+      </div>
+    </div>
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

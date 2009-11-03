@@ -1,0 +1,24 @@
+<h1>Listing service_plans</h1>
+
+<table>
+  <tr>
+    <th>Plan type</th>
+    <th>Price</th>
+    <th>Feature description</th>
+  </tr>
+
+<% @service_plans.each do |service_plan| %>
+  <tr>
+    <td><%=link_to(service_plan.plan_type, signup_path({:service_plan => service_plan.id})) %></td>
+    <td><%=h number_to_currency(service_plan.price) %></td>
+    <td><%=h service_plan.feature_description %></td>
+    <td><%= link_to 'Show', service_plan %></td>
+    <td><%= link_to 'Edit', edit_service_plan_path(service_plan) %></td>
+    <td><%= link_to 'Destroy', service_plan, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New service_plan', new_service_plan_path %>

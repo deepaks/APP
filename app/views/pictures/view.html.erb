@@ -1,0 +1,4 @@
+<% for photo in @photos %>
+    <a href="<%= photo.flickr.photos.getInfo(photo.id).urls.values %>" \
+         target="_blank"><img src="<%= photo.url('s') %>" /></a>
+<% end %>

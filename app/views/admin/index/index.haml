@@ -1,0 +1,24 @@
+%h1 
+  = @account_subdomain + "." + @account_domain
+%ul
+  %li
+    account domain:
+    = @account_domain
+  %li
+    account subdomain:
+    = @account_subdomain
+  %li
+    owner email:
+    -if not @account.owner.nil?
+      = @account.owner.email
+
+- unless @user_registrations.nil?
+  %h2 My Website  
+  %ul
+    - @user_registrations.each do |r|
+      %li
+        - unless r.account.nil?
+          = link_to account_url(r.account.name), account_url(r.account.name)
+        - else
+          = link_to account_url(), account_url()
+        = " (" + r.role.name + ")"

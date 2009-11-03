@@ -1,0 +1,39 @@
+body {
+  background-color: #FFD;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+
+#post_parts
+{
+	padding:0;
+}
+#post_parts li
+{
+	list-style:none;
+	padding:5px 0;
+	border-bottom:1px dashed #999;
+}
+
+#post_parts li p
+{
+	margin:0;
+	padding:5px 0;
+}
+
+#post_parts li .tools
+{
+	padding:5px 10px;
+	position:absolute;
+/*	margin-left:-120px;*/
+	right:0;
+/*	width:100px;*/
+	background:#FFA;
+	font-size:11px;
+	display:none;
+}
+
+#post_parts li:hover .tools
+{
+	display:block;
+}

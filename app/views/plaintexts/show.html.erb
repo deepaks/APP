@@ -1,0 +1,12 @@
+<% title "Plaintext" %>
+
+<p>
+  <strong>Body:</strong>
+  <%=h @plaintext.body %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_plaintext_path(@plaintext) %> |
+  <%= link_to "Destroy", @plaintext, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", plaintexts_path %>
+</p>

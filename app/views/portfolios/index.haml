@@ -1,0 +1,16 @@
+- title("Portfolios")
+
+%ul
+  - @portfolios.each do |portfolio|
+    %li
+      %strong
+        = h portfolio.name
+      |
+      = link_to "Show", portfolio
+      |
+      = link_to "Edit", edit_portfolio_path(portfolio)
+      |
+      = link_to "Destroy", portfolio, :confirm => 'Are you sure?', :method => :delete
+
+%p
+  = link_to "New Portfolio", new_portfolio_path

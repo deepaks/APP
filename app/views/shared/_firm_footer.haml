@@ -1,0 +1,25 @@
+.container
+  %ul#footer_links
+    - unless current_user.nil?
+      %li
+        = link_to "Dashboard", dashboard_url
+      %li
+        = link_to "Log out",logout_url
+    - else
+      %li
+        = link_to "Log in",login_url
+
+  -# = current_account.firm_name
+  -# = current_account.email
+  -# =@tag_line
+  -# =@logo
+  -# =@email
+  -# =@phone
+  -# =@fax
+  -# =@timezone
+  -# =@street
+  -# =@zip
+  -# =@city
+  -# =@state
+  -# =@country
+  

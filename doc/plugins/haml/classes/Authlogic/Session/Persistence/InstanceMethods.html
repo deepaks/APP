@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Authlogic::Session::Persistence::InstanceMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Authlogic::Session::Persistence::InstanceMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/vendor/gems/authlogic-2_1_1/lib/authlogic/session/persistence_rb.html">
+                vendor/gems/authlogic-2.1.1/lib/authlogic/session/persistence.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000828">persisting?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000828" class="method-detail">
+        <a name="M000828"></a>
+
+        <div class="method-heading">
+          <a href="#M000828" class="method-signature">
+          <span class="method-name">persisting?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Let&#8216;s you know if the session is being persisted or not, meaning the
+user does not have to explicitly log in in order to be logged in. If the
+session has no associated record, it will try to find a record and persis
+the session. This is the method that the class level method find uses to
+ultimately persist the session.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000828-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000828-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/authlogic-2.1.1/lib/authlogic/session/persistence.rb, line 51</span>
+51:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">persisting?</span>
+52:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">nil?</span>
+53:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">attempted_record</span> = <span class="ruby-keyword kw">nil</span>
+54:           <span class="ruby-identifier">before_persisting</span>
+55:           <span class="ruby-identifier">persist</span>
+56:           <span class="ruby-identifier">ensure_authentication_attempted</span>
+57:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attempted_record</span>.<span class="ruby-identifier">nil?</span>
+58:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">record</span> = <span class="ruby-identifier">attempted_record</span>
+59:             <span class="ruby-identifier">after_persisting</span>
+60:             <span class="ruby-identifier">save_record</span>
+61:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_session</span> = <span class="ruby-keyword kw">false</span>
+62:             <span class="ruby-keyword kw">true</span>
+63:           <span class="ruby-keyword kw">else</span>
+64:             <span class="ruby-keyword kw">false</span>
+65:           <span class="ruby-keyword kw">end</span>
+66:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

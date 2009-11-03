@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/acts_as_commentable_with_threading/README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Jul 29 11:51:23 -0400 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Acts As Commentable (now with comment threads (TM)!!! &#8212; kidding on
+the (TM))
+</p>
+<h6>=============</h6>
+<p>
+Allows for threaded comments to be added to multiple and different models.
+Drop-in compatible for acts_as_commentable (however requiring a database
+schema change)
+</p>
+<h2>Resources</h2>
+<p>
+This plugin depends on CollectiveIdea&#8216;s Awesome Nested Set plugin.
+</p>
+<p>
+You can find the plugin on GitHub: <a
+href="http://github.com/collectiveidea/awesome_nested_set/tree/master">github.com/collectiveidea/awesome_nested_set/tree/master</a>
+</p>
+<h2>Install</h2>
+<p>
+Rails
+</p>
+<pre>
+        * To install as a plugin:
+
+  script/plugin install http://github.com/jackdempsey/acts_as_commentable
+</pre>
+<p>
+Merb/Rails
+</p>
+<pre>
+        * To install as a gem:
+
+  rake install
+</pre>
+<p>
+Rails
+</p>
+<pre>
+        * To install from scratch:
+
+        script/generate acts_as_commentable_with_threading_migration
+
+        This will generate the migration script necessary for the table
+
+        * To upgrade to acts_as_commentable_with_threading from the old acts_as_commentable:
+
+        script/generate acts_as_commentable_upgrade_migration
+
+        This will generate the necessary migration to upgrade your comments table to work with acts_as_commentable_with_threading
+
+ * Create a new rails migration and add the following self.up and self.down methods
+
+ * These are the required fields for the database migration, however you may add any additional fields you need.
+
+  def self.up
+    create_table &quot;comments&quot;, :force =&gt; true do |t|
+      t.integer &quot;commentable_id&quot;, :default =&gt; 0
+      t.string &quot;commentable_type&quot;, :limit =&gt; 15, :default =&gt; &quot;&quot;
+      t.text &quot;body&quot;, :default =&gt; &quot;&quot;
+      t.integer &quot;user_id&quot;, :default =&gt; 0, :null =&gt; false
+      t.integer &quot;parent_id&quot;
+      t.integer &quot;lft&quot;
+      t.integer &quot;rgt&quot;
+      t.timestamps
+    end
+
+    add_index &quot;comments&quot;, &quot;user_id&quot;
+    add_index &quot;comments&quot;, &quot;commentable_id&quot;
+  end
+
+  def self.down
+    drop_table :comments
+  end
+</pre>
+<h2>Usage</h2>
+<p>
+class Article &lt; ActiveRecord::Base
+</p>
+<pre>
+        acts_as_commentable
+</pre>
+<p>
+end
+</p>
+<pre>
+ * Add a comment to a model instance, for example an Article
+
+        @article = Article.find(params[:id])
+        @user_who_commented = @current_user
+        @comment = Comment.build_from(@article, @user_who_commented.id, &quot;Hey guys this is my comment!&quot; )
+
+ * To make a newly created comment into a child/reply of another comment
+
+        comment.move_to_child_of(the_desired_parent_comment)
+
+ * To retrieve all comments for an article, including child comments
+
+        @all_comments = @article.comment_threads
+
+ * To retrieve only the root comments without their children comments
+
+        @root_comments = @article.root_comments
+
+ * To check if a comment has children
+
+        @comment.has_children?
+
+ * To verify the number of children a comment has
+
+        @comment.children.size
+
+ * To retrieve a comments children
+
+        @comment.children
+
+ *If you plan to use the acts_as_voteable plugin with your comment system be sure to uncomment two things:
+
+        in lib/comment.rb uncomment the line &quot;acts_as_voteable&quot;
+        in lib/acts_as_commentable_with_threading.rb uncomment the line &quot;include Juixe::Acts::Voteable&quot; near the top
+</pre>
+<h2>Credits</h2>
+<p>
+Jack Dempsey - This plugin/gem is heavily influenced/liberally
+borrowed/stole from acts_as_commentable
+</p>
+<p>
+which in turn credits.&#8230;
+</p>
+<p>
+Xelipe - Because acts_as_commentable was heavily influenced by Acts As
+Taggable.
+</p>
+<h2>More</h2>
+<p>
+<a href="http://triple-dog-dare.com">triple-dog-dare.com</a> <a
+href="http://evan.tiggerpalace.com">evan.tiggerpalace.com</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

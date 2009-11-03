@@ -1,0 +1,17 @@
+.container
+
+  #scroll-left
+    = link_to_function "&laquo;","$('move-left').blur()",:id => "move-left"
+  #scroll-right
+    = link_to_function "&raquo;","$('move-right').blur()",:id => "move-right"
+
+  %h2#subheader_title.subheader_title<>
+    Featured Projects
+
+  #gallery
+    .filmstripe
+      %ul#projects_list
+        - current_account.projects.featured.each do |project|
+          %li
+            = render :partial => "/projects/swatch", :locals => {:project => project}
+    .clear

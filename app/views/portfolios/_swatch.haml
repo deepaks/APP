@@ -1,0 +1,7 @@
+%div{:id => "portfolio_swatch_#{portfolio.id}", :class => "portfolio_swatch"}
+  - unless portfolio.thumbnail.nil?
+    = image_tag portfolio.thumbnail.image.url(:thumb)
+  - else
+    %div.swatch_image_place_holder
+  .portfolio_caption
+    = link_to portfolio.name, :controller => "portfolios", :action => "view", :id => portfolio

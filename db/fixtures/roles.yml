@@ -1,0 +1,11 @@
+sysadmin:
+  id: 10
+  name: sys_admin
+  
+account_owner:
+  id: 100
+  name: account_owner
+  
+account_member:
+  id: 1000
+  name: account_member

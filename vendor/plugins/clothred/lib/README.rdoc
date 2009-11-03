@@ -1,0 +1,41 @@
+= ClothRed HTML 2 Textile converter
+
+== What it is
+
+A script to convert HTML into TExtile markup for use, for example, with RedCloth.
+
+
+== Requirements
+
+All you need is Ruby.
+
+== Get it
+
+Available as a gem on RubyForge:
+gem install ClothRed
+
+Or download from Rubyforge:
+http://rubyforge.org/frs/?group_id=3427
+
+Or get the source:
+svn checkout svn://viewvc.rubyforge.mmmultiworks.com/var/svn/clothred
+
+
+== Features
+
+This is alpha software, and only a few Textile rules have been implemented yet:
+ * font markup and weight (<b>, <strong>, ...)
+ * text formatting (<sub>, <sup>, <ins>,<del>)
+
+== Usage
+
+require 'clothred'
+
+text = ClothRed.new("<b>Bold</b> <em>HTML</em>!")
+text.to_textile
+
+== Get Help
+Feel free to contact me, or peruse the homepage.
+
+ * http://clothred.rubyforge.org/
+ * http://rubyforge.org/projects/clothred/

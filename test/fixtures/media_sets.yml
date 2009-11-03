@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: 
+  account_id: 
+  media: 
+
+two:
+  name: 
+  account_id: 
+  media: 

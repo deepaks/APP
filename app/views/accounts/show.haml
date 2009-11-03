@@ -1,0 +1,73 @@
+- title "Account" 
+
+%p
+  %strong
+    Name：
+  =h @account.name 
+
+  %br
+  %strong
+    User Count:
+  =h @account.user_count 
+
+  %br
+  %strong
+    Logo Image
+  =image_tag @account.logo.url
+  %br
+  %strong
+    Description:
+  =h @account.tag_line
+
+  %br
+  %strong
+    email:
+  =h @account.email
+
+  %br
+  %strong
+    telephone:
+  =h @account.phone
+
+  %br
+  %strong
+    fax:
+  =h @account.fax
+
+  %br
+  %strong
+    timezone:
+  =h @account.timezone
+
+  %br
+  %strong
+    zip:
+  =h @address.zip
+
+  %br
+  %strong
+    street address:
+  =h @address.street
+
+  %br
+  %strong
+    zip
+  =h @address.zip
+
+  %br
+  %strong
+    city
+  =h @address.city
+
+  %br
+  %strong
+    state
+  =h @address.state
+
+  %br
+  %strong
+    country
+  =h @address.country
+
+%p
+  = link_to "Edit", edit_account_path(@account) 

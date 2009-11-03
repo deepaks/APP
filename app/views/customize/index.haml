@@ -1,0 +1,10 @@
+- title "Customize"
+
+- form_for "css", :url => {:controller => "customize", :action => "update"}, :method => "POST" do |f|
+  %p
+    = f.label "Customize Your Style Sheet"
+    = f.text_area "file", :style => "width:100%;height:400px;font-size:12px", :value => @style_file
+    
+  %p
+    = f.submit "Update"
+    = link_to "View Site", root_url

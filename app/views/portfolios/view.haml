@@ -1,0 +1,4 @@
+= auto_page_parts
+
+- @portfolio.posts.each do |post|
+  = render :partial => "/posts/full", :locals => {:post => post}

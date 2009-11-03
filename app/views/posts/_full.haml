@@ -1,0 +1,36 @@
+%div{:id=>"post_#{post.id}", :class=>"post"}
+  %h3
+    = link_to_remote h(post.title), :url => view_post_path(post)
+    -#= h post.title
+  
+  .date
+    = post.updated_at
+    
+  - if post.post_parts.size > 0
+    %ul{:id => "#post_content_#{post.id}",:class=>"post_content"}
+      - if post.pictures.size > 0
+        %li
+          = link_to_remote image_tag(post.pictures.first.image.url(:large_thumb)), :url => view_post_path(post), :html => {:class => "condense"}
+          
+        %li
+          = post.pictures.first.caption
+          = " - "
+          = "1/#{post.pictures.size} Pictures"
+      
+
+      - post.post_parts.each do |post_part|
+        - if !post_part.nil? && !post_part.content.nil? && !post_part.content.instance_of?(Picture)
+          = render :partial => "/#{post_part.content.class.name.downcase.pluralize}/full", :locals => {:post_part => post_part, :one => post_part.content}
+
+  %p.tags
+    = "Tags: "
+    = post.tag_list.join(", ")
+
+  - unless post.project.nil?
+    .post_project
+      This post is filed under project:
+      = link_to_remote post.project.name, :url => view_project_path(post.project)
+      
+      - if !current_user.nil? and current_user.belongs_to_account?(current_account.id)
+        |
+        = link_to "Edit", edit_post_path(post)

@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Spec::Adapters::MockFramework</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Spec::Adapters::MockFramework</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/gems/rspec-1_2_8/lib/spec/adapters/mock_frameworks/flexmock_rb.html">
+                vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/flexmock.rb
+                </a>
+        <br />
+                <a href="../../../files/vendor/gems/rspec-1_2_8/lib/spec/adapters/mock_frameworks/mocha_rb.html">
+                vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/mocha.rb
+                </a>
+        <br />
+                <a href="../../../files/vendor/gems/rspec-1_2_8/lib/spec/adapters/mock_frameworks/rr_rb.html">
+                vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rr.rb
+                </a>
+        <br />
+                <a href="../../../files/vendor/gems/rspec-1_2_8/lib/spec/adapters/mock_frameworks/rspec_rb.html">
+                vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rspec.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002356">setup_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002365">setup_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002359">setup_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002362">setup_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002367">teardown_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002361">teardown_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002358">teardown_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002364">teardown_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002363">verify_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002357">verify_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002366">verify_mocks_for_rspec</a>&nbsp;&nbsp;
+      <a href="#M002360">verify_mocks_for_rspec</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">FlexMock::MockContainer</span>
+        <span class="include-name">Mocha::Standalone</span>
+        <span class="include-name">RR::Extensions::InstanceMethods</span>
+        <span class="include-name"><a href="../Mocks/ExampleMethods.html">Spec::Mocks::ExampleMethods</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002356" class="method-detail">
+        <a name="M002356"></a>
+
+        <div class="method-heading">
+          <a href="#M002356" class="method-signature">
+          <span class="method-name">setup_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002356-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002356-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/flexmock.rb, line 13</span>
+13:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_mocks_for_rspec</span>
+14:         <span class="ruby-comment cmt"># No setup required</span>
+15:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002365" class="method-detail">
+        <a name="M002365"></a>
+
+        <div class="method-heading">
+          <a href="#M002365" class="method-signature">
+          <span class="method-name">setup_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002365-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002365-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rspec.rb, line 9</span>
+ 9:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_mocks_for_rspec</span>
+10:           <span class="ruby-identifier">$rspec_mocks</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Spec</span><span class="ruby-operator">::</span><span class="ruby-constant">Mocks</span><span class="ruby-operator">::</span><span class="ruby-constant">Space</span>.<span class="ruby-identifier">new</span>
+11:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002359" class="method-detail">
+        <a name="M002359"></a>
+
+        <div class="method-heading">
+          <a href="#M002359" class="method-signature">
+          <span class="method-name">setup_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002359-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002359-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/mocha.rb, line 9</span>
+ 9:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_mocks_for_rspec</span>
+10:         <span class="ruby-identifier">mocha_setup</span>
+11:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002362" class="method-detail">
+        <a name="M002362"></a>
+
+        <div class="method-heading">
+          <a href="#M002362" class="method-signature">
+          <span class="method-name">setup_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002362-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002362-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rr.rb, line 11</span>
+11:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_mocks_for_rspec</span>
+12:         <span class="ruby-constant">RR</span><span class="ruby-operator">::</span><span class="ruby-constant">Space</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">reset</span>
+13:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002367" class="method-detail">
+        <a name="M002367"></a>
+
+        <div class="method-heading">
+          <a href="#M002367" class="method-signature">
+          <span class="method-name">teardown_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002367-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002367-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rspec.rb, line 15</span>
+15:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teardown_mocks_for_rspec</span>
+16:           <span class="ruby-identifier">$rspec_mocks</span>.<span class="ruby-identifier">reset_all</span>
+17:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002361" class="method-detail">
+        <a name="M002361"></a>
+
+        <div class="method-heading">
+          <a href="#M002361" class="method-signature">
+          <span class="method-name">teardown_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002361-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002361-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/mocha.rb, line 15</span>
+15:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teardown_mocks_for_rspec</span>
+16:         <span class="ruby-identifier">mocha_teardown</span>
+17:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002358" class="method-detail">
+        <a name="M002358"></a>
+
+        <div class="method-heading">
+          <a href="#M002358" class="method-signature">
+          <span class="method-name">teardown_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002358-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002358-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/flexmock.rb, line 19</span>
+19:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teardown_mocks_for_rspec</span>
+20:         <span class="ruby-identifier">flexmock_close</span>
+21:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002364" class="method-detail">
+        <a name="M002364"></a>
+
+        <div class="method-heading">
+          <a href="#M002364" class="method-signature">
+          <span class="method-name">teardown_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002364-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002364-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rr.rb, line 17</span>
+17:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teardown_mocks_for_rspec</span>
+18:         <span class="ruby-constant">RR</span><span class="ruby-operator">::</span><span class="ruby-constant">Space</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">reset</span>
+19:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002363" class="method-detail">
+        <a name="M002363"></a>
+
+        <div class="method-heading">
+          <a href="#M002363" class="method-signature">
+          <span class="method-name">verify_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002363-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002363-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rr.rb, line 14</span>
+14:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_mocks_for_rspec</span>
+15:         <span class="ruby-constant">RR</span><span class="ruby-operator">::</span><span class="ruby-constant">Space</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">verify_doubles</span>
+16:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002357" class="method-detail">
+        <a name="M002357"></a>
+
+        <div class="method-heading">
+          <a href="#M002357" class="method-signature">
+          <span class="method-name">verify_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002357-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002357-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/flexmock.rb, line 16</span>
+16:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_mocks_for_rspec</span>
+17:         <span class="ruby-identifier">flexmock_verify</span>
+18:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002366" class="method-detail">
+        <a name="M002366"></a>
+
+        <div class="method-heading">
+          <a href="#M002366" class="method-signature">
+          <span class="method-name">verify_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002366-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002366-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/rspec.rb, line 12</span>
+12:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_mocks_for_rspec</span>
+13:           <span class="ruby-identifier">$rspec_mocks</span>.<span class="ruby-identifier">verify_all</span>
+14:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002360" class="method-detail">
+        <a name="M002360"></a>
+
+        <div class="method-heading">
+          <a href="#M002360" class="method-signature">
+          <span class="method-name">verify_mocks_for_rspec</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002360-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002360-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/rspec-1.2.8/lib/spec/adapters/mock_frameworks/mocha.rb, line 12</span>
+12:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_mocks_for_rspec</span>
+13:         <span class="ruby-identifier">mocha_verify</span>
+14:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+page.replace_html "item_#{@post_part.id}", "(deleted)"
+page.visual_effect :highlight, "item_#{@post_part.id}"

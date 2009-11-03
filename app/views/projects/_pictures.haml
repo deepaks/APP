@@ -1,0 +1,11 @@
+%ul#media_gallery
+  - @project.pictures.each do |m|
+    %li#media_item
+      = render :partial => "/pictures/gallery_view", :locals => {:one => m}
+      - if m == @project.cover_picture
+        %span.toggle_cover_picture.cover_picture
+          cover picture
+      - else  
+        = link_to_remote "set as cover",:url => {:controller => :projects, :action => :set_cover, :id => @project}, :with => "'cover=#{m.id}'", :html => {:class => "toggle_cover_picture"}
+      
+.clear

@@ -1,0 +1,32 @@
+!!! strict
+
+%html{ :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'en', :lang => 'en' }
+  %head
+    %meta{ 'http-equiv' => 'content-type', :content => 'text/html; charset=UTF-8' }
+    %title= h(yield(:title) || "APP")
+    = javascript_include_tag :defaults
+    = javascript_include_tag "gallery","tooltip"
+    = stylesheet_link_tag "http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"
+    -#= stylesheet_link_tag "http://yui.yahooapis.com/2.7.0/build/base/base-min.css"
+    = stylesheet_link_tag 'frontend'
+    = stylesheet_link_tag "/domains/#{account_subdomain}/stylesheets/frontend.css"
+    = yield(:head)
+
+  %body
+    #header<>
+      = yield :header
+      
+    #sub_header<>
+      = yield :sub_header
+      
+    #main_contain    
+      #content<>
+        = yield
+
+      #sidebar<>
+        = yield :sidebar
+      
+      .clear
+      
+    #footer<>
+      = yield :footer

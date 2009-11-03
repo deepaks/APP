@@ -1,0 +1,7 @@
+@post_parts.each do |post_part|
+  unless post_part.content.nil?
+    page.insert_html :bottom, 'post_parts', :partial => "/#{post_part.content.class.name.downcase.pluralize}/one", :locals => {:one => post_part.content, :post_part => post_part}
+  end
+end
+page['add_picture'].remove
+update_postpart_sortable(page)

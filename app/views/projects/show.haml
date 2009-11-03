@@ -1,0 +1,33 @@
+- title h(@project.name)
+= @coord
+-if @project.address
+  -# = render :partial => "/shared/address_box", :locals => { :address => @project.address }
+  -#= render :partial => "/shared/map_box"
+
+- if @project.portfolios.size > 0
+  This project belongs to following portfolio:
+  %ul
+    - @project.portfolios.each do |port|
+      %li
+        = link_to port.name, port
+
+- if @project.posts.size > 0
+  Posts:
+  %ul
+    - @project.posts.each do |post|
+      %li
+        = render :partial => "/posts/one", :locals => {:one => post}
+        
+- if @project.pictures.size > 0
+  Pictures:
+  = render :partial => "/projects/pictures"
+
+
+%p
+  = link_to "Add New Post", :controller => :projects, :id => @project,:action => :new_post
+  |
+  = link_to "Edit", edit_project_path(@project) 
+  |
+  = link_to "Delete", @project, :confirm => 'Are you sure?', :method => :delete 
+  |
+  = link_to "Go back to all projects", projects_path

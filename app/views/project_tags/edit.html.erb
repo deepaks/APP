@@ -1,0 +1,12 @@
+<h1>Editing project_tag</h1>
+
+<% form_for(@project_tag) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @project_tag %> |
+<%= link_to 'Back', project_tags_path %>

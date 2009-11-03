@@ -1,0 +1,9 @@
+.media_thumb
+  = link_to_function image_tag(one.image.url(:thumb)),"select_from_gallery('media_item_#{one.class.name.downcase}_#{one.id}')", :href=>"#select",:title => one.name
+  = (one.name.nil? || one.name.empty?) ? "" : one.name + "<br />"
+  = link_to_remote "featured", :url => toggle_feature_picture_path(one), :html => {:id => "feature_picture_#{one.id}", :class => "toggle_feature_picture #{one.featured ? "feature_picture_featured" : "feature_picture_normal"}"}
+  
+  %div{:style=>"display:none"}
+    %input{:id => "post[content_ids][#{one.id}]", :name => "post[content_ids][]",:value => one.id, :type=>"checkbox"}
+    %label{:for => "post[content_ids][#{one.id}]"}
+      = render :text => "select"

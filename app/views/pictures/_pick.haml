@@ -1,0 +1,11 @@
+#add_picture
+  #upload_form{:style => "display:block"}
+    = render :partial => "gallery/upload"
+  
+  or
+
+  #image_picker
+    = render :partial => "gallery/picker", :locals => {:current_post => @post}
+    
+  =link_to_function "Close","$('add_picture').remove()"
+  

@@ -1,0 +1,17 @@
+= auto_page_parts
+
+#viewport.makeScroll
+  %h2
+    Recent Posts
+  - @posts.each do |post|
+    = render :partial => "/posts/full", :locals => {:post => post}
+  
+- content_for :head do
+  = javascript_include_tag "slideshow","slider","scroller"
+  
+- content_for :sidebar do
+  %h2
+    Featured 
+    = " - #{@pictures.size} Pictures"
+    -#= " - Click on the image to flip through"
+  = render :partial => "/projects/featured_slideshow"

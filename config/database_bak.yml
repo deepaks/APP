@@ -1,0 +1,14 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: app_development
+  username: root
+  password: 001sonic
+
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: app_test
+  username: root
+  password: 001sonic

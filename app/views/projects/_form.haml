@@ -1,0 +1,59 @@
+- form_for @project do |f| 
+  = f.error_messages 
+  
+  %h3
+    Project Info
+  
+  %p
+    = f.label :name 
+    %br
+    = f.text_field :name 
+    
+  %p
+    = f.check_box :featured
+    = f.label :featured
+    
+  %p
+    = f.label :portfolios 
+    %br
+    = collection_multiple_select 'project', 'portfolio_ids',@portfolios,"id","name" 
+
+  %h3
+    Project Location
+
+  - f.fields_for :address do |address| 
+
+    %p
+      = address.label :street  
+      %br
+      = address.text_field :street 
+
+
+    %p
+      = address.label :zip  
+      %br
+      = address.text_field :zip 
+
+
+    %p
+      = address.label :city  
+      %br
+      = address.text_field :city 
+
+
+    %p
+      = address.label :state  
+      %br
+      = address.text_field :state 
+
+
+    %p
+      = address.label :country  
+      %br
+      = address.text_field :country 
+
+
+      = address.hidden_field :addressable_type, :value => @project.class 
+      = address.hidden_field :addressable_id, :value => @project.id 
+
+  = f.submit "Submit" 

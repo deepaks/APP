@@ -1,0 +1,22 @@
+# Git Ignore How To:
+# # Lines starting with '#' are considered comments.
+# # Ignore any file named foo.txt.
+# foo.txt
+# # Ignore (generated) html files,
+# *.html
+# # except foo.html which is maintained by hand.
+# !foo.html
+# # Ignore objects and archives.
+# *.[oa]
+
+config/database.yml
+db/test.sqlite3
+mail.rb
+log/*
+.DS_Store
+schema.rb
+tmp/*
+tmp/metric_fu/*
+public/domains/*
+public/system/*
+nbproject/*

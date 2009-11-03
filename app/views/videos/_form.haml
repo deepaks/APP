@@ -1,0 +1,15 @@
+- form_for @video do |f| 
+  = f.error_messages 
+  %p
+    = f.label :name 
+    %br
+    = f.text_field :name 
+  
+  - fields_for "post" do |p|
+    %p
+    = p.label :project
+    %br
+    = p.select "project", @projects.map {|proj| [proj.name, proj.id]}, {:selected => ((@video.post.nil? || @video.post.project.nil?) ? "" : @video.post.project.id.to_i), :include_blank => '-- select project --'}
+  
+  
+  %p= f.submit "Submit"

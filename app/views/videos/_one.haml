@@ -1,0 +1,7 @@
+%li{:id => "item_#{post_part.id}", :class => "post_part post_part_#{post_part.position} video_#{one.id}"}
+  %div.tools
+    = link_to_remote "Edit", :url => {:controller => "posts", :action => "edit_part",:id => post_part.post.id, :part => post_part.id}
+    = link_to_remote "Remove", :url => {:controller => "posts", :action => "remove_part",:id => post_part.post.id, :part => post_part.id}, :confirm => "Are you sure?"
+    %span.drag_handle
+      (vid)
+  = one.name

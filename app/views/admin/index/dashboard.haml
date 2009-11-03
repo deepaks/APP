@@ -1,0 +1,56 @@
+%h1
+  Dashboard
+
+#commands
+  %ul
+    %li
+      %strong
+        Account
+    %li
+      = link_to "Setting", edit_account_path(current_account)
+    %li
+      |
+    %li
+      = link_to "Customize", customize_path
+    %li
+      |
+    %li
+      = link_to "Gallery", gallery_path
+      
+  %ul
+    %li
+      %strong
+        Create New
+    %li
+      = link_to "Member", signup_path
+    %li
+      |
+    %li
+      = link_to "Portfolio", new_portfolio_path
+    %li
+      |
+    %li
+      = link_to "Project", new_project_path
+    %li
+      |
+    %li
+      = link_to "Post", new_post_path
+
+  %ul
+    %li
+      %strong
+        Manage
+    %li
+      = link_to "Members", members_path
+    %li
+      |
+    %li
+      = link_to "Portfolios", :controller => "/portfolios", :action => :index
+    %li
+      |
+    %li
+      = link_to "Projects", :controller => "/projects", :action => :index
+    %li
+      |
+    %li
+      = link_to "Posts", :controller => "/posts", :action => :index

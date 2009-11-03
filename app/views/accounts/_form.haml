@@ -1,0 +1,82 @@
+- form_for @account, :html =>{ :multipart => true } do |account|
+  = account.error_messages
+  
+  - fields_for @user do |user|
+    = user.error_messages
+    %h3
+      Create the Administrator account:
+    %p
+      =user.label :first_name 
+      %br
+      =user.text_field :first_name
+
+    %p
+      =user.label :last_name
+      %br
+      =user.text_field :last_name
+
+    %p
+      =user.label :email
+      %br
+      =user.text_field :email
+
+
+    %p
+      = user.label :username
+      %br
+      = user.text_field :username
+
+    %p
+      = user.label :password
+      %br
+      = user.password_field :password
+
+    %p
+      = user.label :password_confirmation
+      %br
+      = user.password_field :password_confirmation
+  
+  %p
+    = account.label :firm_name
+    %br
+    = account.text_field :firm_name
+
+  %p
+    = account.label :timezone
+    %br= account.time_zone_select :timezone, ActiveSupport::TimeZone.us_zones
+
+  %h3
+    Create Your Site Address
+
+  %p
+    Every app site has a unique web address. 
+    %strong
+      Letters and numbers only, please do not include spaces.
+    %br   
+    http:// 
+    = account.text_field :domain_name
+    app.com
+    
+  -fields_for @order do |order|
+    = order.error_messages  
+    %p
+      = order.label :card_type    
+      %br
+      = order.select :card_type, [ ["Visa", "visa"], ["Mastercard", "mastercard"], ["Discover", "discover"], ["American Express", "american_express"] ] 
+
+    %p
+      = order.label :card_number
+      %br
+      = order.text_field :card_number
+    
+    %p  
+      = order.label :card_verification, "Card Verification Value (CVV)"
+      %br
+      = order.text_field :card_verification, :size => 4
+    
+    %p
+      = order.label :card_expires_on
+      %br
+      = order.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year + 10), :add_month_numbers => true
+    
+  = account.submit "Submit"

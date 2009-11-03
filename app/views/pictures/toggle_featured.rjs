@@ -1,0 +1,8 @@
+if @picture.featured
+  page["feature_picture_#{@picture.id}"].addClassName("feature_picture_featured")
+  page["feature_picture_#{@picture.id}"].removeClassName("feature_picture_normal")
+else
+  page["feature_picture_#{@picture.id}"].addClassName("feature_picture_normal")
+  page["feature_picture_#{@picture.id}"].removeClassName("feature_picture_featured")  
+end
+page["feature_picture_#{@picture.id}"].blur

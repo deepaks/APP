@@ -1,0 +1,6 @@
+%h2
+  = "Post: " + @post.title
+  = " - #{@pictures.size} Pictures"
+  -#= " - Click on the image to flip through"
+  
+= render :partial => "/projects/featured_slideshow"

@@ -1,0 +1,8 @@
+= auto_page_parts
+- if !@projects.nil?
+  - @projects.each do |project|
+    = render :partial => "projects/one_cell", :locals => {:project => project}
+
+- if @projects.size < 9
+  - (9 - @projects.size).times do
+    = render :partial => "projects/one_cell", :locals => {:project => nil}

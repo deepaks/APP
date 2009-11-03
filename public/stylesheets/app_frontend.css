@@ -1,0 +1,124 @@
+/*light gray: #ECECEC*/
+/*purple: #EC068D*/
+
+body
+{
+	background-color:#808080;
+}
+
+a
+{
+	color:#424242;
+	text-decoration:none;
+	background-color:#ECECEC;
+	padding:6px;
+}
+
+.clear {clear:both;}
+strong {font-weight:bold;}
+
+#site
+{
+  margin: 0 auto;
+  width: 1000px;
+	background:#FFF;
+	padding:30px 25px;
+}
+
+#app_head
+{
+	width:450px;
+	float:left;
+}
+
+#header
+{
+	margin-bottom:30px;
+}
+
+#navigation
+{
+	float:right;
+	width:550px;
+}
+
+#container
+{
+	float:left;
+	width:675px;
+}
+
+#sidebar
+{
+	float:right;
+	width:325px;
+	
+	text-align:center;
+	vertical-align:middle;
+	background:#EC068D;
+	color:#FFF;
+	height:590px;
+}
+
+#navigation ul
+{
+	float:left;
+	width:150px;
+}
+
+#navigation li
+{
+	font-size:13px;
+	padding:5px 0;
+	font-size:12px;
+	margin-bottom:3px;
+}
+
+#navigation li a
+{
+	 padding:5px 20px 5px 5px;
+}
+
+#footer
+{
+	text-align:center;
+	vertical-align:middle;
+	margin:30px 0;
+	background:#EC068D;
+	height:200px;
+	color:#FFF;
+}
+
+
+.project_cell
+{
+	width:200px;
+	margin-right:25px;
+	margin-bottom:30px;
+	float:left;
+}
+
+.project_cell a
+{
+	background:none;
+	font-size:11px;
+	padding:0;
+}
+
+.project_cell .project_img
+{
+	width:200px;
+	height:150px;
+	background-color:#EEE;
+	background-image:url('../images/placeholder_200_150.png');
+}
+
+.project_cell .project_title
+{
+	margin-top:10px;
+}
+
+.project_cell .project_title, .project_cell .project_firm
+{
+	height:15px;
+}

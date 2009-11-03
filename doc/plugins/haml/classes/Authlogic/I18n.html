@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Authlogic::I18n</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Authlogic::I18n</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/gems/authlogic-2_1_1/lib/authlogic/i18n_rb.html">
+                vendor/gems/authlogic-2.1.1/lib/authlogic/i18n.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This class allows any message in <a href="../Authlogic.html">Authlogic</a>
+to use internationalization. In earlier versions of <a
+href="../Authlogic.html">Authlogic</a> each message was translated via
+configuration. This cluttered up the configuration and cluttered up <a
+href="../Authlogic.html">Authlogic</a>. So all translation has been
+extracted out into this class. Now all messages pass through this class,
+making it much easier to implement in <a href="I18n.html">I18n</a> library
+/ plugin you want. Use this as a layer that sits between <a
+href="../Authlogic.html">Authlogic</a> and whatever <a
+href="I18n.html">I18n</a> library you want to use.
+</p>
+<p>
+By default this uses the rails <a href="I18n.html">I18n</a> library, if it
+exists. If it doesnt exist it just returns the default english message. The
+<a href="../Authlogic.html">Authlogic</a> <a href="I18n.html">I18n</a>
+class works EXACTLY like the rails <a href="I18n.html">I18n</a> class. This
+is because the arguments are delegated to this class.
+</p>
+<p>
+Here is how all messages are translated internally with <a
+href="../Authlogic.html">Authlogic</a>:
+</p>
+<pre>
+  Authlogic::I18n.t('error_messages.password_invalid', :default =&gt; &quot;is invalid&quot;)
+</pre>
+<p>
+If you use a different <a href="I18n.html">I18n</a> library or plugin just
+redefine the <a href="I18n.html#M000952">t</a> method in the <a
+href="I18n.html">Authlogic::I18n</a> class to do whatever you want with
+those options. For example:
+</p>
+<pre>
+  # config/initializers/authlogic.rb
+  module MyAuthlogicI18nAdapter
+    def t(key, options = {})
+      # you will have key which will be something like: &quot;error_messages.password_invalid&quot;
+      # you will also have options[:default], which will be the default english version of the message
+      # do whatever you want here with the arguments passed to you.
+    end
+  end
+
+  Authlogic::I18n.extend MyAuthlogicI18nAdapter
+</pre>
+<p>
+That it&#8216;s! Here is a complete list of the keys that are passed. Just
+define these however you wish:
+</p>
+<pre>
+  authlogic:
+    error_messages:
+      login_blank: can not be blank
+      login_not_found: is not valid
+      login_invalid: should use only letters, numbers, spaces, and .-_@ please.
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: should look like an email address.
+      password_blank: can not be blank
+      password_invalid: is not valid
+      not_active: Your account is not active
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved
+      no_authentication_details: You did not provide any details for authentication.
+    models:
+      user_session: UserSession (or whatever name you are using)
+    attributes:
+      user_session: (or whatever name you are using)
+        login: login
+        email: email
+        password: password
+        remember_me: remember me
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000952">t</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">t</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">translate</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000952" class="method-detail">
+        <a name="M000952"></a>
+
+        <div class="method-heading">
+          <a href="#M000952" class="method-signature">
+          <span class="method-name">t</span><span class="method-args">(key, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+All message translation is passed to this method. The first argument is the
+key for the message. The second is options, see the rails <a
+href="I18n.html">I18n</a> library for a list of options used.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000952-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000952-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/gems/authlogic-2.1.1/lib/authlogic/i18n.rb, line 53</span>
+53:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">t</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span> = {})
+54:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">I18n</span>)
+55:           <span class="ruby-operator">::</span><span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:scope</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:authlogic</span>))
+56:         <span class="ruby-keyword kw">else</span>
+57:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:default</span>]
+58:         <span class="ruby-keyword kw">end</span>
+59:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

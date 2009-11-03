@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Authlogic::AuthenticatesMany</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Authlogic::AuthenticatesMany</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/gems/authlogic-2_1_1/lib/authlogic/authenticates_many/association_rb.html">
+                vendor/gems/authlogic-2.1.1/lib/authlogic/authenticates_many/association.rb
+                </a>
+        <br />
+                <a href="../../files/vendor/gems/authlogic-2_1_1/lib/authlogic/authenticates_many/base_rb.html">
+                vendor/gems/authlogic-2.1.1/lib/authlogic/authenticates_many/base.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This allows you to scope your authentication. For example, let&#8216;s say
+all users belong to an account, you want to make sure only users that
+belong to that account can actually login into that account. Simple, just
+do:
+</p>
+<pre>
+  class Account &lt; ActiveRecord::Base
+    authenticates_many :user_sessions
+  end
+</pre>
+<p>
+Now you can scope sessions just like everything else in ActiveRecord:
+</p>
+<pre>
+  @account.user_sessions.new(*args)
+  @account.user_sessions.create(*args)
+  @account.user_sessions.find(*args)
+  # ... etc
+</pre>
+<p>
+Checkout the authenticates_many method for a list of options. You may also
+want to checkout Authlogic::ActsAsAuthentic::Scope to scope your model.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="AuthenticatesMany/Base.html" class="link">Authlogic::AuthenticatesMany::Base</a><br />
+Class <a href="AuthenticatesMany/Association.html" class="link">Authlogic::AuthenticatesMany::Association</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

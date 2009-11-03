@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Authlogic::Session::Callbacks</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Authlogic::Session::Callbacks</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/gems/authlogic-2_1_1/lib/authlogic/session/callbacks_rb.html">
+                vendor/gems/authlogic-2.1.1/lib/authlogic/session/callbacks.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Between these callsbacks and the configuration, this is the contract
+between me and you to safely modify <a
+href="../../Authlogic.html">Authlogic</a>&#8216;s behavior. I will do
+everything I can to make sure these do not change.
+</p>
+<p>
+Check out the sub modules of Authlogic::Session. They are very concise,
+clear, and to the point. More importantly they use the same API that you
+would use to extend <a href="../../Authlogic.html">Authlogic</a>. That
+being said, they are great examples of how to extend <a
+href="../../Authlogic.html">Authlogic</a> and add / modify behavior to <a
+href="../../Authlogic.html">Authlogic</a>. These modules could easily be
+pulled out into their own plugin and become an &quot;add on&quot; without
+any change.
+</p>
+<p>
+Now to the point of this module. Just like in ActiveRecord you have
+before_save, before_validation, etc. You have similar callbacks with <a
+href="../../Authlogic.html">Authlogic</a>, see the METHODS constant below.
+The order of execution is as follows:
+</p>
+<pre>
+  before_persisting
+  persist
+  after_persisting
+  [save record if record.changed?]
+
+  before_validation
+  before_validation_on_create
+  before_validation_on_update
+  validate
+  after_validation_on_update
+  after_validation_on_create
+  after_validation
+  [save record if record.changed?]
+
+  before_save
+  before_create
+  before_update
+  after_update
+  after_create
+  after_save
+  [save record if record.changed?]
+
+  before_destroy
+  [save record if record.changed?]
+  destroy
+  after_destroy
+</pre>
+<p>
+Notice the &quot;save record if changed?&quot; lines above. This helps with
+performance. If you need to make changes to the associated record, there is
+no need to save the record, <a href="../../Authlogic.html">Authlogic</a>
+will do it for you. This allows multiple modules to modify the record and
+execute as few queries as possible.
+</p>
+<p>
+*<b>WARNING</b>*: unlike ActiveRecord, these callbacks must be set up on
+the class level:
+</p>
+<pre>
+  class UserSession &lt; Authlogic::Session::Base
+    before_validation :my_method
+    validate :another_method
+    # ..etc
+  end
+</pre>
+<p>
+You can NOT define a &quot;before_validation&quot; method, this is bad
+practice and does not allow <a href="../../Authlogic.html">Authlogic</a> to
+extend properly with multiple extensions. Please ONLY use the method above.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">METHODS</td>
+          <td>=</td>
+          <td class="context-item-value">[         &quot;before_persisting&quot;, &quot;persist&quot;, &quot;after_persisting&quot;,         &quot;before_validation&quot;, &quot;before_validation_on_create&quot;, &quot;before_validation_on_update&quot;, &quot;validate&quot;, &quot;after_validation_on_update&quot;, &quot;after_validation_on_create&quot;, &quot;after_validation&quot;,         &quot;before_save&quot;, &quot;before_create&quot;, &quot;before_update&quot;, &quot;after_update&quot;, &quot;after_create&quot;, &quot;after_save&quot;,         &quot;before_destroy&quot;, &quot;after_destroy&quot;</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

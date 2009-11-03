@@ -1,0 +1,7 @@
+%div{:id => "project_swatch_#{project.id}", :class => "project_swatch"}
+  - unless project.cover.nil?
+    = link_to_remote(image_tag(project.cover.image.url(:small)), :url => view_project_path(project), :html => {:class => (defined?(@project) && @project == project) ? "active" : "", :tooltip => project.name})
+  - else
+    = link_to_remote("<div class=\"swatch_image_place_holder\"></div>", :url => view_project_path(project), :html => {:class => (defined?(@project) && @project == project) ? "active" : "", :tooltip => project.name})
+  / .project_caption
+  /   = link_to project.name, :controller => "projects", :action => "view", :id => project

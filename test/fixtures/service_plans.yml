@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  plan_type: MyString
+  price: 1.5
+  feature_description: MyText
+
+two:
+  plan_type: MyString
+  price: 1.5
+  feature_description: MyText

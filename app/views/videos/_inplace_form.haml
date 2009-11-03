@@ -1,0 +1,18 @@
+- time = Time.now.to_i
+%li{:id => "post_part_#{time}"}
+  - remote_form_for @one, :url => {:controller => :videos, :action => form_action, :id => @one.id} do |f| 
+    = f.error_messages 
+    %p
+      = f.text_area :name, :style => "width:100%; height: 150px", :value => (defined?(one) ? one.name : '')
+      
+    %p
+      - fields_for @post do |p|
+        = p.hidden_field :id, :value => @post.id
+      - fields_for "item" do |i|
+        = i.hidden_field :id, :value => "post_part_#{time}"
+        = i.hidden_field :post_part_id, :value => @post_part.id
+      = f.submit "Save"
+      - if defined?(one)
+        = link_to_remote "Cancel",:url => {:controller => "posts", :action => "show_part" , :part => @post_part, :container => "post_part_#{time}"} 
+      - else
+        = link_to_function "Cancel","cancel_current_part('post_part_#{time}')"

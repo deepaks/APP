@@ -1,0 +1,21 @@
+<% content_for :head do%>
+<%= active_scaffold_includes %>
+<% end -%>
+<% title "Accounts" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User Count</th>
+  </tr>
+  <% for account in @accounts %>
+    <tr>
+      <td><%=h account.name %></td>
+      <td><%= link_to "Show", account %></td>
+      <td><%= link_to "Edit", edit_account_path(account) %></td>
+      <td><%= link_to "Destroy", account, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Account", new_account_path %></p>

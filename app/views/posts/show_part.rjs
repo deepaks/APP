@@ -1,0 +1,2 @@
+page.replace @container, :partial => "/#{@one.class.name.downcase.pluralize}/one", :locals => {:one => @one, :post_part => @post_part}
+update_postpart_sortable(page)

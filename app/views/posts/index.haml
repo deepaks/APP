@@ -1,0 +1,7 @@
+- title "All Posts"
+
+- if @posts.size > 0
+  %ul
+    - @posts.each do |post|
+      %li
+        = link_to post.title, edit_post_path(post)

@@ -1,0 +1,2 @@
+page.replace @item_id, :partial => "videos/one", :locals => {:one => @one, :post_part => @post_part}
+update_postpart_sortable(page)

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Paperclip::Upfile</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Paperclip::Upfile</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/paperclip/lib/paperclip/upfile_rb.html">
+                vendor/plugins/paperclip/lib/paperclip/upfile.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The <a href="Upfile.html">Upfile</a> module is a convenience module for
+adding uploaded-file-type methods to the <tt>File</tt> class. Useful for
+testing.
+</p>
+<pre>
+  user.avatar = File.new(&quot;test/test_avatar.jpg&quot;)
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002581">content_type</a>&nbsp;&nbsp;
+      <a href="#M002582">original_filename</a>&nbsp;&nbsp;
+      <a href="#M002583">size</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002581" class="method-detail">
+        <a name="M002581"></a>
+
+        <div class="method-heading">
+          <a href="#M002581" class="method-signature">
+          <span class="method-name">content_type</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Infer the MIME-type of the file from the extension.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002581-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002581-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/upfile.rb, line 8</span>
+ 8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_type</span>
+ 9:       <span class="ruby-identifier">type</span> = (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">path</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/\.(\w+)$/</span>)[<span class="ruby-value">1</span>] <span class="ruby-keyword kw">rescue</span> <span class="ruby-value str">&quot;octet-stream&quot;</span>).<span class="ruby-identifier">downcase</span>
+10:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+11:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;jpe?g&quot;</span>                 <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;image/jpeg&quot;</span>
+12:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;tiff?&quot;</span>                 <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;image/tiff&quot;</span>
+13:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;png&quot;</span>, <span class="ruby-value str">&quot;gif&quot;</span>, <span class="ruby-value str">&quot;bmp&quot;</span>     <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;image/#{type}&quot;</span>
+14:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;txt&quot;</span>                     <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;text/plain&quot;</span>
+15:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;html?&quot;</span>                 <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;text/html&quot;</span>
+16:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;csv&quot;</span>, <span class="ruby-value str">&quot;xml&quot;</span>, <span class="ruby-value str">&quot;css&quot;</span>, <span class="ruby-value str">&quot;js&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;text/#{type}&quot;</span>
+17:       <span class="ruby-keyword kw">else</span> <span class="ruby-node">&quot;application/x-#{type}&quot;</span>
+18:       <span class="ruby-keyword kw">end</span>
+19:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002582" class="method-detail">
+        <a name="M002582"></a>
+
+        <div class="method-heading">
+          <a href="#M002582" class="method-signature">
+          <span class="method-name">original_filename</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the file&#8216;s normal name.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002582-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002582-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/upfile.rb, line 22</span>
+22:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">original_filename</span>
+23:       <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">path</span>)
+24:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002583" class="method-detail">
+        <a name="M002583"></a>
+
+        <div class="method-heading">
+          <a href="#M002583" class="method-signature">
+          <span class="method-name">size</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Upfile.html#M002583">size</a> of the file.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002583-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002583-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/paperclip/lib/paperclip/upfile.rb, line 27</span>
+27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+28:       <span class="ruby-constant">File</span>.<span class="ruby-identifier">size</span>(<span class="ruby-keyword kw">self</span>)
+29:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

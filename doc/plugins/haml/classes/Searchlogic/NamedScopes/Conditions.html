@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Searchlogic::NamedScopes::Conditions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Searchlogic::NamedScopes::Conditions</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions_rb.html">
+                vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Handles dynamically creating named scopes for columns.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001282">alias_condition?</a>&nbsp;&nbsp;
+      <a href="#M001279">condition?</a>&nbsp;&nbsp;
+      <a href="#M001280">local_condition?</a>&nbsp;&nbsp;
+      <a href="#M001276">named_scope_arity</a>&nbsp;&nbsp;
+      <a href="#M001275">named_scope_options</a>&nbsp;&nbsp;
+      <a href="#M001277">primary_condition</a>&nbsp;&nbsp;
+      <a href="#M001281">primary_condition?</a>&nbsp;&nbsp;
+      <a href="#M001278">primary_condition_name</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">COMPARISON_CONDITIONS</td>
+          <td>=</td>
+          <td class="context-item-value">{         :equals =&gt; [:is, :eq],         :does_not_equal =&gt; [:not_equal_to, :is_not, :not, :ne],         :less_than =&gt; [:lt, :before],         :less_than_or_equal_to =&gt; [:lte],         :greater_than =&gt; [:gt, :after],         :greater_than_or_equal_to =&gt; [:gte],       }</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">WILDCARD_CONDITIONS</td>
+          <td>=</td>
+          <td class="context-item-value">{         :like =&gt; [:contains, :includes],         :not_like =&gt; [],         :begins_with =&gt; [:bw],         :not_begin_with =&gt; [:does_not_begin_with],         :ends_with =&gt; [:ew],         :not_end_with =&gt; [:does_not_end_with]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">BOOLEAN_CONDITIONS</td>
+          <td>=</td>
+          <td class="context-item-value">{         :null =&gt; [:nil],         :not_null =&gt; [:not_nil],         :empty =&gt; []</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CONDITIONS</td>
+          <td>=</td>
+          <td class="context-item-value">{}</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">PRIMARY_CONDITIONS</td>
+          <td>=</td>
+          <td class="context-item-value">CONDITIONS.keys</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ALIAS_CONDITIONS</td>
+          <td>=</td>
+          <td class="context-item-value">CONDITIONS.values.flatten</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001282" class="method-detail">
+        <a name="M001282"></a>
+
+        <div class="method-heading">
+          <a href="#M001282" class="method-signature">
+          <span class="method-name">alias_condition?</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Is the name of the method a valid condition that can be dynamically
+created, AND is it an alias condition. &quot;gt&quot; not
+&quot;greater_than&quot;.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001282-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001282-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 118</span>
+118:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">alias_condition?</span>(<span class="ruby-identifier">name</span>)
+119:         <span class="ruby-operator">!</span><span class="ruby-identifier">alias_condition_details</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">nil?</span>
+120:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001279" class="method-detail">
+        <a name="M001279"></a>
+
+        <div class="method-heading">
+          <a href="#M001279" class="method-signature">
+          <span class="method-name">condition?</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Is the name of the method a valid condition that can be dynamically
+created?
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001279-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001279-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 101</span>
+101:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">condition?</span>(<span class="ruby-identifier">name</span>)
+102:         <span class="ruby-identifier">local_condition?</span>(<span class="ruby-identifier">name</span>)
+103:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001280" class="method-detail">
+        <a name="M001280"></a>
+
+        <div class="method-heading">
+          <a href="#M001280" class="method-signature">
+          <span class="method-name">local_condition?</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Is the condition for a local column, not an association
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001280-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001280-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 106</span>
+106:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">local_condition?</span>(<span class="ruby-identifier">name</span>)
+107:         <span class="ruby-identifier">primary_condition?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">alias_condition?</span>(<span class="ruby-identifier">name</span>)
+108:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001276" class="method-detail">
+        <a name="M001276"></a>
+
+        <div class="method-heading">
+          <a href="#M001276" class="method-signature">
+          <span class="method-name">named_scope_arity</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The arity for a named scope&#8216;s proc is important, because we use the
+arity to determine if the condition should be ignored when calling the
+search method. If the condition is false and the arity is 0, then we skip
+it all together. Ex:
+</p>
+<pre>
+  User.named_scope :age_is_4, :conditions =&gt; {:age =&gt; 4}
+  User.search(:age_is_4 =&gt; false) == User.all
+  User.search(:age_is_4 =&gt; true) == User.all(:conditions =&gt; {:age =&gt; 4})
+</pre>
+<p>
+We also use it when trying to &quot;copy&quot; the underlying named scope
+for association conditions.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001276-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001276-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 72</span>
+72:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">named_scope_arity</span>(<span class="ruby-identifier">name</span>)
+73:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">named_scope_options</span>(<span class="ruby-identifier">name</span>)
+74:         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:arity</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+75:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001275" class="method-detail">
+        <a name="M001275"></a>
+
+        <div class="method-heading">
+          <a href="#M001275" class="method-signature">
+          <span class="method-name">named_scope_options</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Retrieves the options passed when creating the respective named scope. Ex:
+</p>
+<pre>
+  named_scope :whatever, :conditions =&gt; {:column =&gt; value}
+</pre>
+<p>
+This method will return:
+</p>
+<pre>
+  :conditions =&gt; {:column =&gt; value}
+</pre>
+<p>
+ActiveRecord hides this internally, so we have to try and pull it out with
+this method.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001275-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001275-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 52</span>
+52:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">named_scope_options</span>(<span class="ruby-identifier">name</span>)
+53:         <span class="ruby-identifier">key</span> = <span class="ruby-identifier">scopes</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">primary_condition_name</span>(<span class="ruby-identifier">name</span>)
+54:         
+55:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>
+56:           <span class="ruby-identifier">eval</span>(<span class="ruby-value str">&quot;options&quot;</span>, <span class="ruby-identifier">scopes</span>[<span class="ruby-identifier">key</span>])
+57:         <span class="ruby-keyword kw">else</span>
+58:           <span class="ruby-keyword kw">nil</span>
+59:         <span class="ruby-keyword kw">end</span>
+60:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001277" class="method-detail">
+        <a name="M001277"></a>
+
+        <div class="method-heading">
+          <a href="#M001277" class="method-signature">
+          <span class="method-name">primary_condition</span><span class="method-args">(alias_condition)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the primary condition for the given alias. Ex:
+</p>
+<pre>
+  primary_condition(:gt) =&gt; :greater_than
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001277-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001277-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 80</span>
+80:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">primary_condition</span>(<span class="ruby-identifier">alias_condition</span>)
+81:         <span class="ruby-constant">CONDITIONS</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">alias_condition</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">alias_condition</span>.<span class="ruby-identifier">to_sym</span>) }.<span class="ruby-identifier">first</span>
+82:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001281" class="method-detail">
+        <a name="M001281"></a>
+
+        <div class="method-heading">
+          <a href="#M001281" class="method-signature">
+          <span class="method-name">primary_condition?</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Is the name of the method a valid condition that can be dynamically
+created, AND is it a primary condition (not an alias).
+&quot;greater_than&quot; not &quot;gt&quot;.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001281-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001281-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 112</span>
+112:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">primary_condition?</span>(<span class="ruby-identifier">name</span>)
+113:         <span class="ruby-operator">!</span><span class="ruby-identifier">primary_condition_details</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">nil?</span>
+114:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001278" class="method-detail">
+        <a name="M001278"></a>
+
+        <div class="method-heading">
+          <a href="#M001278" class="method-signature">
+          <span class="method-name">primary_condition_name</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the primary name for any condition on a column. You can pass it a
+primary condition, alias condition, etc, and it will return the proper
+primary condition name. This helps simply logic throughout <a
+href="../../Searchlogic.html">Searchlogic</a>. Ex:
+</p>
+<pre>
+  primary_condition_name(:id_gt) =&gt; :id_greater_than
+  primary_condition_name(:id_greater_than) =&gt; :id_greater_than
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001278-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001278-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/searchlogic/lib/searchlogic/named_scopes/conditions.rb, line 90</span>
+90:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">primary_condition_name</span>(<span class="ruby-identifier">name</span>)
+91:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">primary_condition?</span>(<span class="ruby-identifier">name</span>)
+92:           <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>
+93:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">details</span> = <span class="ruby-identifier">alias_condition_details</span>(<span class="ruby-identifier">name</span>)
+94:           <span class="ruby-node">&quot;#{details[:column]}_#{primary_condition(details[:condition])}&quot;</span>.<span class="ruby-identifier">to_sym</span>
+95:         <span class="ruby-keyword kw">else</span>
+96:           <span class="ruby-keyword kw">nil</span>
+97:         <span class="ruby-keyword kw">end</span>
+98:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

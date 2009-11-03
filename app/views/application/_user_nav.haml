@@ -1,0 +1,12 @@
+#user_nav
+  %strong 
+    = account_host(current_account_name)
+  (
+  = link_to "Visit", account_url(account_subdomain)
+  )
+  |
+  = link_to "Admin", :controller => "/admin/index"
+  - if is_client_account?
+    = render :partial => "/application/firm_user_nav"
+  - else
+    = render :partial => "/application/app_user_nav"

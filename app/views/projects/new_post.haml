@@ -1,0 +1,11 @@
+- title h("New Post")
+
+- form_for @post, :url => {:controller => :projects, :action => :create_post, :id => @project} do |f|
+
+  = render :partial => "/posts/form",:locals => {:form => f}
+
+  %p
+    =f.submit "Create"
+
+This post will be added to project: 
+= link_to h(@project.name), project_path(@project) 

@@ -1,0 +1,6 @@
+if @type == 'picture'
+  page.insert_html :after, "post_parts", :partial => "/pictures/pick",:locals => {:form_action => "create"}
+  page << "initUploader('#{decode_entities(picture_upload_path_with_session_information(:upload_to_post))}&post_id=#{@post.id}');"
+else
+  page.insert_html :bottom, "post_parts", :partial => "#{@type.downcase.pluralize}/inplace_form",:locals => {:form_action => "create"}
+end

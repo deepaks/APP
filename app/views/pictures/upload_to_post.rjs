@@ -1,0 +1,3 @@
+#page << "alert('image created')"
+page.insert_html :bottom,"post_parts", :partial => "pictures/one", :locals => {:one => @one,:post_part => @post_part}
+update_postpart_sortable(page)

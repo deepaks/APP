@@ -1,0 +1,18 @@
+- form_for @picture, :html => {:multipart => :true} do |f| 
+  = f.error_messages 
+  %p
+    = f.label :name 
+    %br
+    = f.text_field :name 
+  
+  %p
+    = f.file_field :image
+  
+  -#- fields_for "post" do |p|
+    -#%p
+    -#= p.label :project
+    -#%br
+    -#= p.select "project", @projects.map {|proj| [proj.name, proj.id]}, {:selected => ((@picture.post.nil? || @picture.post.project.nil?) ? "" : @picture.post.project.id.to_i), :include_blank => '-- select project --'}
+  
+  
+  %p= f.submit "Submit" 

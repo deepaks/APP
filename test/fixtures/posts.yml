@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  postable_type: MyString
+  postable_id: 1
+
+two:
+  postable_type: MyString
+  postable_id: 1

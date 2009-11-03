@@ -1,0 +1,11 @@
+- title @picture.name
+
+%p
+  = image_tag @picture.image.url
+
+%p
+  = link_to "Edit", edit_picture_path(@picture)
+  |
+  = link_to "Destroy", @picture, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", pictures_path
