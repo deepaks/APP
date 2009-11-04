@@ -1,15 +1,16 @@
 .project_cell
+  .project_img
+    - unless project.nil? or project.thumbnail.nil?
+      = link_to image_tag(project.thumbnail.image.url(:large_thumb)), account_url_for({:controller => :projects, :action => :view, :id => project}, project.account.domain_name)
+  .project_title
+    - unless project.nil?
+      = link_to project.name, account_url_for({:controller => :projects, :action => :view, :id => project}, project.account.domain_name)
+    - else
+      = link_to "Null Project"
+  .project_firm
+    - unless project.nil? or project.account.nil?
+      = link_to project.account.domain_name, account_url(project.account.domain_name)
+    - else
+      = link_to "Null Firm"
 
- .project_img
-  - unless project.nil? or project.thumbnail.nil?
-   = link_to image_tag(project.thumbnail.image.url(:large_thumb)), account_url_for({:controller => :projects, :action => :view, :id => project}, project.account.domain_name)
- .project_title
-  - unless project.nil?
-   = link_to project.name, account_url_for({:controller => :projects, :action => :view, :id => project}, project.account.domain_name)
-  - else
-   = link_to "Null Project"
- .project_firm
-  - unless project.nil? or project.account.nil?
-   = link_to project.account.domain_name, account_url(project.account.domain_name)
-  - else
-   = link_to "Null Firm"
+
