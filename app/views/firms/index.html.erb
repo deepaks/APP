@@ -1,0 +1,19 @@
+<h1>Listing firms</h1>
+
+<table>
+  <tr>
+  </tr>
+<% if !@users.blank? %>
+<% @users.each do |firm| %>
+  <tr>
+    <td><%= link_to 'Show', firm %></td>
+    <td><%= link_to 'Edit', edit_firm_path(firm) %></td>
+    <td><%= link_to 'Destroy', firm, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create New firm', new_firm_path %>

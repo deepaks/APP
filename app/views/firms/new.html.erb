@@ -1,0 +1,23 @@
+<h1>New firm Member</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+<p>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <br/>
+      <%= f.label :username %>      
+      <%= f.text_field :username %>
+      <br/>
+      <%= f.label :password %>      
+      <%= f.password_field :password %>
+      <br/>
+      <%= f.label :password_confirmation %>      
+      <%= f.password_field :password_confirmation %>
+</p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', firms_path %>

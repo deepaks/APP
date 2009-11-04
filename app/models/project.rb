@@ -4,10 +4,11 @@ class Project < ActiveRecord::Base
   belongs_to :account
   has_many :posts, :order => "updated_at DESC"
   has_one :address, :as => :addressable
-  belongs_to :cover_picture, :class_name => "Picture", :foreign_key => "cover_picture_id"
+  #belongs_to :cover_picture, :class_name => "Picture", :foreign_key => "cover_picture_id"
   has_many :posts
   belongs_to :user
   has_many :project_taggings
+  has_many :pictures
   has_many :portfolio_images
   has_many :portfolios, :through => :portfolio_images
   

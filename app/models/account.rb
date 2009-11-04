@@ -16,7 +16,7 @@ class Account < ActiveRecord::Base
   has_one :address, :as => :addressable
   has_one :service_plan
 
-  has_one :account
+  has_one :payment
   has_many :registrations
   has_many :users, :through => :registrations
   has_many :portfolios

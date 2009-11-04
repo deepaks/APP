@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_one :profile_info
   has_many :key_members
   has_many :favourites
+
+#  validates_presence_of :email
+#  validates_presence_of :password
+#  validates_uniqueness_of :email
   
   def deliver_password_reset_instructions!(account_subdomain)
     reset_perishable_token!  

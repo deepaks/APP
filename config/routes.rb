@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :clients
+
+  map.resources :firms
+
   map.resources :project_tags
 
   map.resources :user_types
@@ -23,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.upload_to_gallery "upload_to_gallery",:controller => "gallery",:action => "upload_new"
   map.gallery "gallery", :controller => "gallery"
   map.customize "customize", :controller => "customize"
-
+  
   map.members "members", :controller => "users", :action => "list"
 
   map.signup "signup", :controller => "accounts", :action => "new"

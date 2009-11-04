@@ -2,7 +2,9 @@
 
 <% form_for(@user_type) do |f| %>
   <%= f.error_messages %>
-
+  <%= f.label :user_type %>
+  <%= f.text_field :user_type %>
+  <br/>
   <p>
     <%= f.submit 'Create' %>
   </p>

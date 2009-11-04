@@ -1,11 +1,12 @@
 class Post < ActiveRecord::Base
+  
   belongs_to :account
   belongs_to :project
   has_many :post_parts, :order => :position, :dependent => :destroy
   has_many :post_links
   has_many :pictures
   has_many :videos
-  belongs_to :post
+  belongs_to :tag
   belongs_to :project
 
   validates_presence_of :title
