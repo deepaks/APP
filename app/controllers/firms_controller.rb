@@ -1,10 +1,11 @@
 class FirmsController < ApplicationController
   # GET /firms
   # GET /firms.xml
+   layout :check_layout
   def index
     #@firms = Firm.all
-    @user_type = UserType.find_by_user_type('Firm Admins')
-    @users = User.find(:all, :conditions => ['user_type_id = ?', @user_type.id ])
+    #@user_type = UserType.find_by_type('Admin')
+    @users = User.find(:all, :conditions => ['user_type_id = ?', 2 ])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
@@ -82,5 +83,11 @@ class FirmsController < ApplicationController
       format.html { redirect_to(firms_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def check_layout
+    is_main_site? ? "app_frontend" : "firm_frontend"
   end
 end

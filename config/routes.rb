@@ -38,6 +38,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources "user_sessions"
   map.resources "users"
+  
+  map.list_members "list_members" , :controller => "index", :action => "list_members"
+  
+  map.list_clients "list_clients" , :controller => "index", :action => "list_clients"
 
   map.profile "profile", :controller => "users", :action => "show", :id => "current"
   map.edit_profile "edit_profile", :controller => "users", :action => "edit", :id => "current"

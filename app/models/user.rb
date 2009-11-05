@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base  
   acts_as_authentic
-  
+  belongs_to :user_type
   has_many :registrations
   has_many :accounts, :through => :registrations
   has_many :roles, :through => :registrations
@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
     @_list ||= self.registrations.collect(&:account_id)
     ! @_list.empty?
   end
+  
+  
+  
   # ---------------------------------------
   
 

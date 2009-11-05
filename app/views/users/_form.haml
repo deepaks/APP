@@ -1,7 +1,7 @@
 - form_for @user do |f|
   = f.error_messages
   %p
-    Create the Administrator account:
+    
   %p
     =f.label :first_name
     =f.text_field :first_name
@@ -27,5 +27,11 @@
   %p
     = f.label :password_confirmation
     = f.password_field :password_confirmation
+ 
+  %p
+    - @user_type = UserType.find(:all)
+    = f.label :user_type
+    = f.select ("user_type_id", @user_type.map {|u| [u.name,u.id]})
+  
   
   = f.submit "Submit"

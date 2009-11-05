@@ -1,7 +1,8 @@
 = auto_page_parts
 %h1
-  All Users
-
+  Members
+  %br
+  %br
 %ul
   - @users.each do |user|
     %li
@@ -10,5 +11,6 @@
       = " (" + user.email + ")"
       |
       = link_to "Edit", edit_user_path(user)
-
+%br
+%br
 = link_to "Create", new_user_path

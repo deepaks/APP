@@ -1,14 +1,19 @@
 = auto_page_parts
 %h1
-  All Users
-
+  Clients
+  %br
+  %br
 %ul
-  - @users.each do |user|
-    %li
+  - if !@users.empty?
+    - @users.each do |user|
+      %li
       %strong
         = user.username
       = " (" + user.email + ")"
       |
       = link_to "Edit", edit_user_path(user)
-
+  - else
+    No clients add yet
+%br
+%br
 = link_to "Create", new_user_path

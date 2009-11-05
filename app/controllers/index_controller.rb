@@ -11,7 +11,24 @@ class IndexController < ApplicationController
     @projects = Project.find(:all, :limit => 9)
   end
   
-private
+  def list_members
+    if is_main_site? # main site requires sys admin
+      @users = User.all
+    else # firm site requires account member
+      @user = current_account.users
+      @users = User.find(:all,:conditions => ['user_type_id = ?', 3 ])
+    end
+  end
+  
+  def list_clients
+    if is_main_site? # main site requires sys admin
+      @users = User.all
+    else # firm site requires account member
+      @user = current_account.users
+      @users = User.find(:all,:conditions => ['user_type_id = ?', 4 ])
+    end
+  end
+  private
   
   def check_layout
     is_main_site? ? "app_frontend" : "firm_frontend"

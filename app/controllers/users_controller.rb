@@ -1,7 +1,9 @@
 class UsersController < ApplicationController 
 	before_filter :require_firm_site, :only => [:new, :create, :edit, :update]
-	
-	layout :current_backend_layout_name
+	layout :check_layout,:only => [:new]
+	layout :current_backend_layout_name, :except => [:list]
+        
+          
   #before_filter :require_account_owner, :only => [:new, :create]
   def new
     @user = User.new
@@ -14,46 +16,46 @@ class UsersController < ApplicationController
 	  end
   end
   
-  # def create
-  #   @user = User.new(params[:user])
+   def create
+     @user = User.new(params[:user])
   # 		
-  #   if @user.save
-  #     reg = Registration.new
-  #     reg.user = @user
+     if @user.save
+       reg = Registration.new
+       reg.user = @user
   #     
-  #   if is_main_site?
-  #       # on the main site, create new account/subdomain for the user
-  #       @account = Account.new(params[:account])
-  #       @order = Order.new(params[:order])
-  #       @account.save
-  #       reg.role = Role.name_equals('account_owner').first
-  #     else
+     if is_main_site?
+         # on the main site, create new account/subdomain for the user
+         @account = Account.new(params[:account])
+         @order = Order.new(params[:order])
+         @account.save
+         reg.role = Role.name_equals('account_owner').first
+       else
   #       # current account present, user is a member
-  #       @account = current_account
-  #       reg.role = Role.name_equals('account_member').first
-  #     end
+         @account = current_account
+         reg.role = Role.name_equals('account_member').first
+       end
   # 
-  #     reg.account = @account
-  #     @user.registrations << reg
+       reg.account = @account
+       @user.registrations << reg
   #     
-  #     if is_main_site?
-  #       #flash[:notice] = @account.domain_name + ".app.local successfully created"
-  #       redirect_to account_url(@account.domain_name)
-  #     else
-  #       flash[:notice] = "Successfully registered."
+       if is_main_site?
+         #flash[:notice] = @account.domain_name + ".app.local successfully created"
+         redirect_to account_url(@account.domain_name)
+       else
+         flash[:notice] = "Successfully registered."
   #       
-  #       if current_user.nil?
-  #         redirect_to root_url
-  #       else
-  #         redirect_to :controller => "users", :action => "list"
-  #       end
-  #     end
-  #   else
-  # 			@account = Account.new
-  # 	    @order = Order.new
-  #     render :action => 'new'
-  #   end
-  # end
+         if current_user.nil?
+           redirect_to root_url
+         else
+           redirect_to :controller => "index", :action => "index"
+         end
+       end
+     else
+   		@account = Account.new
+   	    @order = Order.new
+       render :action => 'new'
+     end
+   end
   
   
 	 
@@ -125,5 +127,9 @@ class UsersController < ApplicationController
 #   current_user.remove_twitter_info
 #   redirect_to :action => "edit", :id => current_user.id
 # end
-
+private
+  
+  def check_layout
+    is_main_site? ? "app_frontend" : "firm_frontend"
+  end
 end

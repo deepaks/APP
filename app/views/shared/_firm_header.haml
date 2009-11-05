@@ -11,10 +11,11 @@
         = link_to "Projects"
       %li 
         = link_to "Portfolios"
-      %li
-        = link_to "Firm Members", :controller => 'firms', :action => 'index'
-      %li
-        = link_to "Firm Clients", :controller => 'clients', :action => 'index'
+      - if current_account.owner == current_user
+        %li
+          = link_to "Members",  list_members_path
+        %li
+          = link_to "Clients", list_clients_path
       
     #search
       SEARCH

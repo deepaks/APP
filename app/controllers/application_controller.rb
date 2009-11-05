@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include SubdomainAccounts
-
+  include AuthenticatedSystem
   layout :current_backend_layout_name
 
   before_filter :check_account_status
